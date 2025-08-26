@@ -11,24 +11,91 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="page-portfolio" class="bg-gray-50">
+<body class="bg-white text-gray-800">
 
-    <header id="main-header" class="bg-white shadow-md sticky top-0 z-50"></header>
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <!-- Logo SVG -->
+                <svg width="180" height="40" viewBox="0 0 350 80">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#2563eb;" />
+                            <stop offset="100%" style="stop-color:#3b82f6;" />
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(0, 5) scale(0.8)">
+                        <path d="M0 0 L35 70 L70 0 L50 0 L35 30 L20 0 Z" fill="url(#logoGradient)"></path>
+                    </g>
+                    <g transform="translate(60, 0)">
+                        <text x="0" y="40" font-family="Poppins, sans-serif" font-size="36" font-weight="700" fill="#2563eb">VISUAL</text>
+                        <text x="0" y="68" font-family="Poppins, sans-serif" font-size="16" font-weight="300" fill="#6b7280" letter-spacing="0.5">ISOLAMENTOS</text>
+                    </g>
+                </svg>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html#inicio" class="nav-link text-gray-600 hover:text-blue-600 transition duration-300">Início</a>
+                <div class="relative dropdown">
+                    <a href="#" id="nav-services" class="nav-link text-gray-600 transition duration-300 flex items-center py-3">
+                        Serviços e Produtos
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="dropdown-menu absolute bg-white shadow-lg rounded-md mt-0 py-2 w-48 z-50">
+                        <a href="servicos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Nossos Serviços</a>
+                        <a href="produtos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Catálogo de Produtos</a>
+                    </div>
+                </div>
+                <a href="portfolio.html" class="nav-link text-blue-600 font-semibold transition duration-300">Portfólio</a>
+                <a href="sobre.html" class="nav-link text-gray-600 hover:text-blue-600 transition duration-300">Sobre Nós</a>
+                <a href="index.html#contato" class="nav-link bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">Contato</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="index.html#inicio" class="nav-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Início</a>
+            <a href="servicos.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Nossos Serviços</a>
+            <a href="produtos.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Catálogo de Produtos</a>
+            <a href="portfolio.html" class="nav-link block py-2 px-4 text-sm text-blue-600 font-semibold hover:bg-gray-100">Portfólio</a>
+            <a href="sobre.html" class="nav-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Sobre Nós</a>
+            <a href="index.html#contato" class="nav-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Contato</a>
+        </div>
+    </header>
 
+    <!-- Conteúdo: Portfólio Completo -->
     <main class="py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Nosso Portfólio Completo</h1>
-                <p class="text-gray-600 mt-2 text-lg">Explore todos os nossos projetos e a qualidade do nosso trabalho.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nosso Portfólio</h2>
+                <p class="text-gray-600 mt-2">Conheça alguns dos projetos que orgulhosamente entregamos.</p>
             </div>
             <div id="portfolio-full-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Todos os projetos serão inseridos aqui pelo JS -->
+                <!-- Projetos serão inseridos aqui pelo JS -->
             </div>
         </div>
     </main>
 
-    <footer id="main-footer" class="bg-gray-800 text-white py-8"></footer>
+    <!-- Modal de Portfólio -->
+    <div id="portfolio-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+        <div class="bg-white rounded-lg shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto relative" id="modal-content"></div>
+    </div>
 
+    <!-- Rodapé -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Visual Isolamentos. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-400 mt-2">Desenvolvido por Jussara Pixel</p>
+        </div>
+    </footer>
+
+    <script src="data-services.js" defer></script>
+    <script src="data-products.js" defer></script>
+    <script src="data-portfolio.js" defer></script>
+    <script src="data-partners.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>
