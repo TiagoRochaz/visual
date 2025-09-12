@@ -566,13 +566,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (partnersTrack && typeof partnersData !== 'undefined') {
         // Duplica os parceiros para criar o efeito de loop infinito
         const allPartners = [...partnersData, ...partnersData];
-        
-        // Ajustado para 8 itens por página (12.5% cada)
-        partnersTrack.style.width = `${allPartners.length * 12.5}%`; 
+
+        // Para exibir 4 logos, cada um precisa de 25% do container.
+        // O track tem 16 logos (8 duplicados), então a largura total do track deve ser 16 * 25% = 400% do container.
+        partnersTrack.style.width = `${allPartners.length * 25}%`;
 
         allPartners.forEach(partner => {
             const partnerDiv = document.createElement('div');
-            partnerDiv.className = 'flex-shrink-0 w-1/8 px-8 flex flex-col items-center justify-center';
+            // A largura de cada item deve ser 1/16 da largura total do track (400%).
+            // 100% / 16 = 6.25%. Isso resulta em um tamanho renderizado de 6.25% de 400% = 25% do container, mantendo o tamanho desejado.
+            partnerDiv.className = 'flex-shrink-0 w-[6.25%] px-8 flex flex-col items-center justify-center';
             
             const img = document.createElement('img');
             img.src = partner.logo;
