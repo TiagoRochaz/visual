@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
 
     <!-- Cabeçalho e Navegação -->
     <header class="bg-white shadow-md sticky top-0 z-50">
@@ -67,32 +67,18 @@
     </header>
 
     <!-- Conteúdo: Catálogo de Produtos -->
-    <main class="py-20">
-        <div class="container mx-auto px-6">
+    <main class="product-catalog-bg py-20 flex-grow">
+        <div id="products-catalog-page" class="container mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Catálogo de Produtos</h2>
-                <p class="text-gray-600 mt-2">Escolha uma categoria para explorar nossos produtos.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Catálogo de Produtos</h2>
+                <p class="text-gray-400 mt-2">Escolha uma categoria para explorar nossos produtos.</p>
             </div>
-            <div id="products-catalog-page">
-                <div id="product-categories-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Categorias serão renderizadas via JS -->
-                </div>
+            <div id="product-categories-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Categorias serão renderizadas via JS -->
             </div>
-
-            <!-- Lista e Detalhes Dinâmicos (SPA interna desta página) -->
-            <section id="product-list-page" class="hidden py-10">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-semibold text-gray-800">Produtos</h3>
-                    <button class="back-to-catalog text-blue-600 hover:underline">Voltar ao Catálogo</button>
-                </div>
-                <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            </section>
-
-            <section id="product-detail-page" class="hidden py-10">
-                <button class="back-to-product-list text-blue-600 hover:underline mb-6">Voltar à Lista</button>
-                <div id="product-detail" class="bg-white rounded-lg shadow p-6"></div>
-            </section>
         </div>
+        <div id="product-list-page" class="hidden container mx-auto px-6"></div>
+        <div id="product-detail-page" class="hidden container mx-auto px-6"></div>
     </main>
 
     <!-- Rodapé -->

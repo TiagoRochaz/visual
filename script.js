@@ -236,40 +236,46 @@ function showProductListPage(categoryId) {
     const category = productsData[categoryId];
     let productsHtml = '';
     
-    Object.keys(category.products).forEach(productId => {
-        const product = category.products[productId];
-        productsHtml += `
-            <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
-                <div class="relative h-56">
-                    <img src="${product.image}" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">${product.name}</h3>
+    if (category && category.products) {
+        Object.keys(category.products).forEach(productId => {
+            const product = category.products[productId];
+            productsHtml += `
+                <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
+                    <div class="relative h-56">
+                        <img src="${product.image}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">${product.name}</h3>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <p class="text-gray-400 flex-grow">${product.summary}</p>
+                        <button class="view-product-detail-page mt-4 text-blue-400 font-semibold self-start" data-category="${categoryId}" data-product="${productId}">Ver Especificações &rarr;</button>
+                    </div>
                 </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <p class="text-gray-400 flex-grow">${product.summary}</p>
-                    <button class="view-product-detail-page mt-4 text-blue-400 font-semibold self-start" data-category="${categoryId}" data-product="${productId}">Ver Especificações &rarr;</button>
-                </div>
-            </div>
-        `;
-    });
+            `;
+        });
+    }
+
+    const pageContent = `
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-white">${category.categoryName}</h2>
+            <p class="text-gray-400 mt-2">${category.categoryDescription}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            ${productsHtml}
+        </div>
+        <div class="text-center mt-12">
+            <button class="back-to-catalog text-gray-400 font-semibold">&larr; Voltar ao Catálogo</button>
+        </div>
+    `;
 
     if (productListPage) {
-        productListPage.innerHTML = `
-            <main class="product-catalog-bg py-20">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-12">
-                        <h2 class="text-4xl font-bold text-white">${category.categoryName}</h2>
-                        <p class="text-gray-400 mt-2">${category.categoryDescription}</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        ${productsHtml}
-                    </div>
-                    <div class="text-center mt-12">
-                        <button class="back-to-catalog text-gray-400 font-semibold">&larr; Voltar ao Catálogo</button>
-                    </div>
-                </div>
-            </main>
-        `;
+        // Se estivermos no index.html (SPA), envolvemos o conteúdo em um <main>.
+        // Se não, injetamos diretamente, pois a estrutura já existe em produtos.html.
+        if (document.getElementById('main-page')) {
+            productListPage.innerHTML = `<main class="product-catalog-bg py-20"><div class="container mx-auto px-6">${pageContent}</div></main>`;
+        } else {
+            productListPage.innerHTML = pageContent;
+        }
         showPage(productListPage);
     }
 }
@@ -277,37 +283,42 @@ function showProductListPage(categoryId) {
 function showProductDetailPage(categoryId, productId) {
     if (typeof productsData === 'undefined' || !productsData[categoryId]) return;
     
-    const product = productsData[categoryId].products[productId];
+    const product = productsData[categoryId].products[productId];    
+    if (!product) return;
+
     let specsHtml = '';
-    
-    Object.keys(product.specs).forEach(specKey => {
-        specsHtml += `<li class="flex justify-between py-3 border-b border-gray-700"><span class="font-semibold text-gray-400">${specKey}</span><span class="font-mono text-blue-400">${product.specs[specKey]}</span></li>`;
-    });
+    if (product.specs) {
+        Object.keys(product.specs).forEach(specKey => {
+            specsHtml += `<li class="flex justify-between py-3 border-b border-gray-700"><span class="font-semibold text-gray-400">${specKey}</span><span class="font-mono text-blue-400">${product.specs[specKey]}</span></li>`;
+        });
+    }
+
+    const pageContent = `
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div class="sticky top-24">
+                <img src="${product.image}" class="w-full h-auto rounded-lg shadow-2xl">
+            </div>
+            <div>
+                <h1 class="text-5xl font-bold text-white mb-4">${product.name}</h1>
+                <p class="text-lg text-gray-300 leading-relaxed mb-6">${product.description}</p>
+                <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-white mb-4">Especificações Técnicas</h3>
+                    <ul>${specsHtml}</ul>
+                </div>
+                <button class="contact-from-service-button mt-6 w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300">Solicitar Orçamento</button>
+            </div>
+        </div>
+            <div class="text-center mt-16">
+            <button class="back-to-product-list text-gray-400 font-semibold" data-category="${categoryId}">&larr; Voltar para ${productsData[categoryId].categoryName}</button>
+        </div>
+    `;
 
     if (productDetailPage) {
-        productDetailPage.innerHTML = `
-            <main class="product-catalog-bg py-20">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                        <div class="sticky top-24">
-                            <img src="${product.image}" class="w-full h-auto rounded-lg shadow-2xl">
-                        </div>
-                        <div>
-                            <h1 class="text-5xl font-bold text-white mb-4">${product.name}</h1>
-                            <p class="text-lg text-gray-300 leading-relaxed mb-6">${product.description}</p>
-                            <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-lg">
-                                <h3 class="text-2xl font-bold text-white mb-4">Especificações Técnicas</h3>
-                                <ul>${specsHtml}</ul>
-                            </div>
-                            <button class="contact-from-service-button mt-6 w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300">Solicitar Orçamento</button>
-                        </div>
-                    </div>
-                     <div class="text-center mt-16">
-                        <button class="back-to-product-list text-gray-400 font-semibold" data-category="${categoryId}">&larr; Voltar para ${productsData[categoryId].categoryName}</button>
-                    </div>
-                </div>
-            </main>
-        `;
+        if (document.getElementById('main-page')) {
+            productDetailPage.innerHTML = `<main class="product-catalog-bg py-20"><div class="container mx-auto px-6">${pageContent}</div></main>`;
+        } else {
+            productDetailPage.innerHTML = pageContent;
+        }
         showPage(productDetailPage);
     }
 }
