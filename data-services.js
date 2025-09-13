@@ -37,5 +37,28 @@ const servicesData = {
         targetAudience: 'Essencial para indústrias de todos os segmentos que operam com linhas de fluidos quentes ou frios, como petroquímicas, alimentícias, usinas de açúcar e álcool, e farmacêuticas.',
         executionTime: 'O prazo é definido pela metragem total e pela complexidade de acesso às tubulações (andaimes, trabalho em altura). Projetos são planejados para otimizar o tempo e minimizar a interferência na produção.',
         pricingModel: 'O valor é calculado por metro linear, variando conforme o diâmetro da tubulação, a espessura do isolante e o tipo de acabamento. Peças especiais como curvas, flanges e válvulas possuem um valor de metro equivalente.'
+    },
+    'estruturas-solda': {
+        title: 'Montagem de Estruturas e Solda',
+        image: 'assets/images/montagemiso.png',
+        summary: 'Montagem de tubulações, estruturas, plataformas de abate, trilhagens e serviços de solda industrial.',
+        gallery: ['assets/images/teste.png', 'assets/images/montagemiso.png'],
+        description: 'Oferecemos soluções completas em montagem de estruturas metálicas, pipe racks e tubulações industriais. Nossa equipe de soldadores qualificados garante a execução de serviços de solda com alta precisão e segurança, seguindo as normas técnicas mais exigentes do mercado.',
+        subServices: [
+            { title: 'Solda TIG/MIG/Eletrodo', text: 'Executamos todos os tipos de solda industrial para união e reparo de componentes metálicos.' },
+            { title: 'Montagem de Pipe Racks', text: 'Construção de suportes e estruturas para sistemas de tubulação industrial.' },
+            { title: 'Plataformas e Trilhagens', text: 'Construção de plataformas de abate e sistemas de trilhagem aérea para movimentação em frigoríficos.' },
+            { title: 'Fabricação sob Medida', text: 'Desenvolvemos e fabricamos peças e estruturas metálicas conforme a necessidade do seu projeto.' }
+        ],
+        benefits: [
+            { title: 'Qualidade e Precisão', text: 'Soldas e montagens realizadas por profissionais qualificados, garantindo a integridade estrutural e a durabilidade do seu projeto.' },
+            { title: 'Segurança Operacional', text: 'Todos os serviços são executados seguindo rigorosos padrões de segurança para proteger sua equipe e sua operação.' },
+            { title: 'Versatilidade', text: 'Capacidade para atender a uma ampla gama de necessidades, desde pequenas reparações até grandes projetos de montagem estrutural.' },
+            { title: 'Cumprimento de Prazos', text: 'Planejamento e execução eficientes para entregar seu projeto dentro do cronograma acordado.' }
+        ],
+        targetAudience: 'Indústrias de todos os segmentos que necessitam de serviços de montagem, manutenção ou fabricação de estruturas e componentes metálicos.',
+        executionTime: 'O prazo de execução é definido com base na complexidade e escopo do projeto, sempre em alinhamento com o cliente.',
+        pricingModel: 'Orçamentos baseados no tipo de serviço, materiais utilizados e horas de trabalho estimadas. Oferecemos propostas competitivas e detalhadas.',
+        showInPreview: false
     }
 };

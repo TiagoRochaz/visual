@@ -180,12 +180,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Preview dos serviços (incluindo produtos)
-    const previewServices = {...servicesData, ...{'produtos': {title: 'Nossos Produtos', image: 'assets/images/teste.png', summary: 'Fornecimento de materiais de alta performance, como isolantes térmicos e painéis isotérmicos para o seu projeto.'}}};
+    const allServicesForPreview = {...servicesData, ...{'produtos': {title: 'Nossos Produtos', image: 'assets/images/teste.png', summary: 'Fornecimento de materiais de alta performance, como isolantes térmicos e painéis isotérmicos para o seu projeto.'}}};
     
     if (servicesPreviewContainer) {
-        Object.keys(previewServices).forEach(id => {
-            const cardHtml = createServiceCard(id, previewServices[id]);
-            servicesPreviewContainer.innerHTML += cardHtml;
+        Object.keys(allServicesForPreview).forEach(id => {
+            const service = allServicesForPreview[id];
+            // Mostra o serviço no preview apenas se a flag `showInPreview` não for explicitamente `false`.
+            // Isso permite que serviços sem a flag (padrão) apareçam.
+            if (service.showInPreview !== false) {
+                const cardHtml = createServiceCard(id, service);
+                servicesPreviewContainer.innerHTML += cardHtml;
+            }
         });
     }
 
@@ -217,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const category = productsData[categoryId];
             productCategoriesGrid.innerHTML += `
                 <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300">
-                    <img src="${category.categoryImage}" class="w-full h-64 object-cover opacity-60 group-hover:opacity-80 transition-opacity">
+                    <img src="${category.categoryImage}" class="w-full h-56 object-cover opacity-60 group-hover:opacity-80 transition-opacity">
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-white mb-2">${category.categoryName}</h3>
                         <p class="text-gray-400 mb-4">${category.categoryDescription}</p>
@@ -236,13 +241,33 @@ function showProductListPage(categoryId) {
     const category = productsData[categoryId];
     let productsHtml = '';
     
-    if (category && category.products) {
+    // Se a categoria for 'isopaineis', mostramos os links para as subcategorias.
+    if (categoryId === 'isopaineis' && category.subcategories) {
+        Object.keys(category.subcategories).forEach(subcatId => {
+            const subcategory = category.subcategories[subcatId];
+            productsHtml += `
+                <a href="produtos-lista.html?category=${categoryId}&subcategory=${subcatId}" class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
+                    <div class="relative h-56">
+                        <img src="${subcategory.subcategoryImage}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">${subcategory.subcategoryName}</h3>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <p class="text-gray-400 flex-grow">${subcategory.subcategorySummary}</p>
+                        <span class="mt-4 text-blue-400 font-semibold self-start">Explorar Itens &rarr;</span>
+                    </div>
+                </a>
+            `;
+        });
+    }
+    // Para outras categorias, mostramos os produtos diretamente.
+    else if (category.products) {
         Object.keys(category.products).forEach(productId => {
             const product = category.products[productId];
             productsHtml += `
                 <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
-                    <div class="relative h-56">
-                        <img src="${product.image}" class="w-full h-full object-cover">
+                    <div class="relative aspect-square bg-gray-900">
+                        <img src="${product.image}" class="w-full h-full object-contain">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                         <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">${product.name}</h3>
                     </div>
@@ -280,16 +305,85 @@ function showProductListPage(categoryId) {
     }
 }
 
-function showProductDetailPage(categoryId, productId) {
+function renderSubcategoryProducts(categoryId, subcategoryId) {
+    const container = document.getElementById('product-list-page');
+    if (!container || typeof productsData === 'undefined') return;
+
+    const subcategory = productsData[categoryId]?.subcategories?.[subcategoryId];
+    if (!subcategory) {
+        container.innerHTML = '<p class="text-white text-center text-xl">Subcategoria não encontrada.</p>';
+        return;
+    }
+
+    let productsHtml = '';
+    if (Object.keys(subcategory.products).length > 0) {
+        Object.keys(subcategory.products).forEach(productId => {
+            const product = subcategory.products[productId];
+            productsHtml += `
+                <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
+                    <div class="relative aspect-square bg-gray-900">
+                        <img src="${product.image}" class="w-full h-full object-contain">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">${product.name}</h3>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <p class="text-gray-400 flex-grow">${product.summary}</p>
+                        <button class="view-product-detail-page mt-4 text-blue-400 font-semibold self-start" data-category="${categoryId}" data-subcategory="${subcategoryId}" data-product="${productId}">Ver Especificações &rarr;</button>
+                    </div>
+                </div>
+            `;
+        });
+    } else {
+        productsHtml = '<p class="text-gray-400 text-center col-span-1 md:col-span-2 lg:col-span-3">Nenhum produto nesta subcategoria ainda. Volte em breve!</p>';
+    }
+
+    const pageContent = `
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-white">${subcategory.subcategoryName}</h2>
+            <p class="text-gray-400 mt-2">Explore os produtos disponíveis nesta subcategoria.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">${productsHtml}</div>
+        <div class="text-center mt-12"><a href="produtos.html" class="text-gray-400 font-semibold">&larr; Voltar ao Catálogo Principal</a></div>
+    `;
+    container.innerHTML = pageContent;
+}
+
+function showProductDetailPage(categoryId, subcategoryId, productId) {
     if (typeof productsData === 'undefined' || !productsData[categoryId]) return;
     
-    const product = productsData[categoryId].products[productId];    
+    const category = productsData[categoryId];
+    let product;
+    let backButtonText = category.categoryName;
+
+    if (subcategoryId && category.subcategories && category.subcategories[subcategoryId]) {
+        product = category.subcategories[subcategoryId].products[productId];
+        backButtonText = category.subcategories[subcategoryId].subcategoryName;
+    } else if (category.products) {
+        product = category.products[productId];
+    }
+    
     if (!product) return;
 
     let specsHtml = '';
     if (product.specs) {
         Object.keys(product.specs).forEach(specKey => {
-            specsHtml += `<li class="flex justify-between py-3 border-b border-gray-700"><span class="font-semibold text-gray-400">${specKey}</span><span class="font-mono text-blue-400">${product.specs[specKey]}</span></li>`;
+            const specValue = product.specs[specKey];
+            
+            // Se o valor for um array, cria uma lista de "tags" que quebram a linha.
+            if (Array.isArray(specValue)) {
+                const listItems = specValue.map(item => `<li class="inline-block mr-2 mb-2 px-3 py-1 bg-gray-800 border border-gray-600 rounded-full">${item}</li>`).join('');
+                specsHtml += `
+                    <li class="flex flex-col py-3 border-b border-gray-700">
+                        <span class="font-semibold text-gray-400 mb-3">${specKey}</span>
+                        <ul class="flex flex-wrap font-mono text-blue-300">
+                            ${listItems}
+                        </ul>
+                    </li>`;
+            } 
+            // Se for uma string, mantém o formato original de chave-valor.
+            else {
+                specsHtml += `<li class="flex justify-between py-3 border-b border-gray-700"><span class="font-semibold text-gray-400">${specKey}</span><span class="font-mono text-blue-400">${specValue}</span></li>`;
+            }
         });
     }
 
@@ -309,7 +403,7 @@ function showProductDetailPage(categoryId, productId) {
             </div>
         </div>
             <div class="text-center mt-16">
-            <button class="back-to-product-list text-gray-400 font-semibold" data-category="${categoryId}">&larr; Voltar para ${productsData[categoryId].categoryName}</button>
+            <button class="back-to-product-list text-gray-400 font-semibold" data-category="${categoryId}" data-subcategory="${subcategoryId || ''}">&larr; Voltar para ${backButtonText}</button>
         </div>
     `;
 
@@ -329,14 +423,20 @@ document.addEventListener('click', (e) => {
         showProductListPage(e.target.dataset.category);
     }
     if (e.target.classList.contains('view-product-detail-page')) {
-        showProductDetailPage(e.target.dataset.category, e.target.dataset.product);
+        const categoryId = e.target.dataset.category;
+        const subcategoryId = e.target.dataset.subcategory; // Can be undefined
+        const productId = e.target.dataset.product;
+        showProductDetailPage(categoryId, subcategoryId, productId);
     }
     if (e.target.classList.contains('back-to-catalog')) {
         if (productsCatalogPage) showPage(productsCatalogPage);
         else window.location.href = 'produtos.html';
     }
     if (e.target.classList.contains('back-to-product-list')) {
-        showProductListPage(e.target.dataset.category);
+        // This is more efficient and correctly returns to the previous list (category or subcategory)
+        if (productListPage) {
+            showPage(productListPage);
+        }
     }
 });
 
@@ -444,29 +544,55 @@ function openModal(projectId) {
     if (typeof portfolioData === 'undefined' || !modal || !modalContent) return;
     
     const project = portfolioData[projectId];
+
+    // Main slides HTML
     let galleryHtml = '';
     project.gallery.forEach((img, index) => {
-        galleryHtml += `<div class="carousel-slide flex-shrink-0 w-full"><img src="${img}" class="w-full h-80 object-cover rounded-lg" alt="${project.title} - Imagem ${index + 1}"></div>`;
+        // Aumentei a altura para h-[65vh] (65% da altura da tela) para que imagens verticais (de celular) fiquem maiores e mais visíveis.
+        // Revertido para o modelo anterior, com altura de 65vh e fundo mais escuro para um visual mais padronizado.
+        // Alterado para 'object-cover' para que a imagem preencha o quadro, removendo as bordas (letterboxing). O fundo foi removido por não ser mais visível.
+        galleryHtml += `<div class="carousel-slide flex-shrink-0 w-full rounded-lg"><img src="${img}" class="w-full h-[65vh] object-cover" alt="${project.title} - Imagem ${index + 1}"></div>`;
     });
 
+    // Thumbnails HTML
+    let thumbnailsHtml = '';
+    if (project.gallery.length > 1) {
+        project.gallery.forEach((img, index) => {
+            // Increased height for thumbnails
+            thumbnailsHtml += `
+                <button class="thumbnail-button rounded-md overflow-hidden border-2 border-transparent focus:outline-none transition-all duration-300" data-index="${index}">
+                    <img src="${img}" class="w-full h-20 object-cover" alt="Thumbnail ${index + 1}">
+                </button>
+            `;
+        });
+    }
+
+    // Key features HTML
     let featuresHtml = '';
     project.keyFeatures.forEach(feature => {
         featuresHtml += `<li class="flex items-start"><span class="text-blue-500 mr-2 mt-1 font-bold">&#10003;</span><span>${feature}</span></li>`;
     });
 
     modalContent.innerHTML = `
-        <button id="close-modal-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-3xl font-bold z-10">&times;</button>
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 p-6">
+        <button id="close-modal-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-3xl font-bold z-20">&times;</button>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8 p-6 md:p-8">
             <div class="md:col-span-3">
-                <div class="relative overflow-hidden rounded-lg">
-                    <div class="carousel-container flex transition-transform duration-300 ease-in-out">
-                        <div class="carousel-track flex transition-transform duration-300">
-                            ${galleryHtml}
-                        </div>
+                <!-- Main Image Viewer: Simplified structure to fix image cutting -->
+                <div class="relative overflow-hidden rounded-lg mb-4 shadow-lg">
+                    <div class="carousel-track flex">
+                        ${galleryHtml}
                     </div>
-                    <button id="prevBtn" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition">&#8249;</button>
-                    <button id="nextBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition">&#8250;</button>
+                    ${project.gallery.length > 1 ? `
+                    <button id="prevBtn" class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition z-10">&#8249;</button>
+                    <button id="nextBtn" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition z-10">&#8250;</button>
+                    ` : ''}
                 </div>
+                <!-- Thumbnails: Added for image preview -->
+                ${project.gallery.length > 1 ? `
+                <div class="thumbnail-container grid grid-cols-5 gap-2">
+                    ${thumbnailsHtml}
+                </div>
+                ` : ''}
             </div>
             <div class="md:col-span-2 flex flex-col">
                 <h2 class="text-3xl font-bold mb-2">${project.title}</h2>
@@ -477,40 +603,63 @@ function openModal(projectId) {
                 <div class="bg-gray-100 p-4 rounded-lg">
                     <h4 class="font-bold text-gray-800 mb-2">Destaques do Projeto</h4><ul class="space-y-2">${featuresHtml}</ul>
                 </div>
-                <button class="contact-from-service-button mt-4 bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition">Entrar em Contato</button>
+                <button class="contact-from-service-button mt-6 bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition">Entrar em Contato</button>
             </div>
         </div>
     `;
     
     modal.classList.remove('opacity-0', 'pointer-events-none');
     document.body.style.overflow = 'hidden';
-    
+
     // Configurar carrossel do modal
     const track = modalContent.querySelector('.carousel-track');
     const slides = Array.from(track.children);
     const nextButton = modalContent.querySelector('#nextBtn');
     const prevButton = modalContent.querySelector('#prevBtn');
+    const thumbnails = modalContent.querySelectorAll('.thumbnail-button');
     
-    if (slides.length > 0) {
-        const slideWidth = slides[0].getBoundingClientRect().width;
+    if (slides.length > 1) {
         let currentIndex = 0;
         
+        const updateThumbnails = (activeIndex) => {
+            thumbnails.forEach((thumb, index) => {
+                if (index === activeIndex) {
+                    thumb.classList.add('border-blue-500');
+                    thumb.classList.remove('border-transparent');
+                } else {
+                    thumb.classList.remove('border-blue-500');
+                    thumb.classList.add('border-transparent');
+                }
+            });
+        };
+
         const moveToSlide = (targetIndex) => {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transition = 'transform 0.4s ease-in-out';
             track.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)';
             currentIndex = targetIndex;
-        }
+            updateThumbnails(currentIndex);
+        };
         
-        if (prevButton) {
-            prevButton.addEventListener('click', e => { 
-                moveToSlide(currentIndex === 0 ? slides.length - 1 : currentIndex - 1); 
-            });
-        }
+        prevButton.addEventListener('click', () => { 
+            const newIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+            moveToSlide(newIndex); 
+        });
         
-        if (nextButton) {
-            nextButton.addEventListener('click', e => { 
-                moveToSlide(currentIndex === slides.length - 1 ? 0 : currentIndex + 1); 
+        nextButton.addEventListener('click', () => { 
+            const newIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+            moveToSlide(newIndex); 
+        });
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.dataset.index, 10);
+                moveToSlide(index);
             });
-        }
+        });
+
+        // Initial state
+        updateThumbnails(0);
     }
     
     // Botão fechar modal
