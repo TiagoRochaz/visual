@@ -2,9 +2,9 @@
 const servicesData = {
     'paineis-isotermicos': {
         title: 'Montagem de Painéis Isotérmicos',
-        image: 'assets/images/teste.png',
+        image: 'assets/images/banneriso.png',
         summary: 'Montagem de câmaras frias, salas limpas e fachadas com painéis isotérmicos.',
-        gallery: ['assets/images/montagemiso.png', 'assets/images/teste.png', 'assets/images/montagemiso.png'],
+        gallery: ['assets/images/Serviços/Rio Maria/Embalagem (3).jpg', 'assets/images/Serviços/Rio Maria/Embalagem (2).jpg', 'assets/images/Serviços/Rio Maria/Embalagem (4).jpg'],
         description: 'Mais do que uma simples montagem, nosso serviço de painéis isotérmicos é uma solução de engenharia completa para ambientes que exigem controle rigoroso de temperatura e higiene. Entendemos que cada grau Celsius economizado e cada padrão sanitário atendido representa um ganho direto para a sua operação. Por isso, nosso foco é entregar um sistema de isolamento que não seja um custo, mas sim um investimento estratégico com retorno garantido.',
         subServices: [
             { title: 'Instalação e Manutenção de Portas Frigoríficas', text: 'Implementamos e realizamos a manutenção de portas de correr e de giro, essenciais para o bom funcionamento e vedação da sua câmara.' },
@@ -23,9 +23,9 @@ const servicesData = {
     },
     'isolamento-tubulacoes': {
         title: 'Isolamento de Tubulações',
-        image: 'assets/images/teste.png',
+        image: 'assets/images/bannertub.png',
         summary: 'Aplicação de poliuretano e lã de rocha para linhas de refrigeração e aquecimento, com acabamento em alumínio.',
-        gallery: ['assets/images/teste.png', 'assets/images/montagemiso.png', 'assets/images/teste.png'],
+        gallery: ['assets/images/Serviços/Amambai/tubulaçao amanbai.jpg', 'assets/images/Serviços/SEBO/tubulaçao digestor 2.jpg', 'assets/images/Serviços/SEBO/IMG-20241112-WA0018.jpg'],
         description: 'O isolamento de tubulações é um dos investimentos com maior taxa de retorno em uma planta industrial. Cada metro de tubulação não isolada ou mal isolada é um ponto de perda de energia e dinheiro. Nosso serviço transforma esse passivo em um ativo, otimizando seu processo e protegendo sua infraestrutura e sua equipe.',
         subServices: [],
         benefits: [

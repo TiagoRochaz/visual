@@ -2,12 +2,12 @@
 const productsData = {
     'isolantes-termicos': {
         categoryName: 'Isolantes Térmicos',
-        categoryImage: 'assets/images/teste.png',
+        categoryImage: 'assets/images/sldemqn.jpg',
         categoryDescription: 'Fornecemos materiais de alta performance para cada tipo de aplicação, garantindo a máxima eficiência para o seu projeto.',
         products: {
             'la-de-rocha': {
   name: 'Lã de Rocha',
-  image: 'assets/images/laderocha.png',
+  image: 'assets/images/produtos/LadeRocha.png',
   summary: 'Material isolante térmico e acústico, produzido a partir de rochas basálticas, leve e flexível, adequado para diversos setores.',
   description: 'A Lã de Rocha é fabricada a partir de rochas basálticas especiais e outros minerais que, aquecidos a cerca de 1500°C, são transformados em filamentos. Estes filamentos, aglomerados com resinas orgânicas, permitem a fabricação de produtos leves, flexíveis ou muito rígidos, dependendo do grau de compactação. Devido às características termo-acústicas, atende a construção civil, indústria, setor automotivo e eletrodomésticos, garantindo conforto ambiental, segurança, aumento no rendimento de equipamentos e economia de energia com excelente relação custo/benefício.',
   specs: {
@@ -16,11 +16,11 @@ const productsData = {
     'Aplicações Típicas': 'Construção civil, indústria, automotivos, eletrodomésticos',
     'Vantagens': 'Conforto ambiental, segurança, aumento de rendimento de equipamentos, economia de energia, excelente custo/benefício'
   },
-  gallery: ['assets/images/laderocha.png']
+  gallery: ['assets/images/produtos/LadeRocha.png']
 },
 'la-de-vidro': {
   name: 'Lã de Vidro',
-  image: 'assets/images/ladevidro.png',
+  image: 'assets/images/produtos/LadeVidro.png',
   summary: 'Material isolante termo-acústico com alta resistência mecânica, produzido com tecnologia avançada de entrelaçamento de fibras.',
   description: 'A Lã de Vidro é produzida utilizando a avançada tecnologia do processo Tel, reconhecida mundialmente. O entrelaçamento das fibras garante resistência mecânica superior, proporcionando excelente isolamento térmico e absorção sonora. Além disso, oferece economia de energia, conforto ambiental, segurança e facilidade na aplicação dos produtos.',
   specs: {
@@ -29,11 +29,11 @@ const productsData = {
     'Vantagens': 'Economia de energia, conforto ambiental, segurança, facilidade de aplicação',
     'Aplicações Típicas': 'Construção civil, indústrias, sistemas de climatização e isolamento acústico'
   },
-  gallery: ['assets/images/ladevidro.png']
+  gallery: ['assets/images/produtos/LadeVidro.png']
 },
 'poliuretano': {
   name: 'Poliuretano',
-  image: 'assets/images/poliuretano.png',
+  image: 'assets/images/produtos/poliuretano.png',
   summary: 'Espuma rígida utilizada para isolamento térmico, com alta eficiência em baixas temperaturas.',
   description: 'O Poliuretano é uma espuma rígida utilizada predominantemente em técnicas de isolamento térmico. É resultado da reação química de um poli-isocianato combinado com um gás expansor, proporcionando alto fator de isolamento térmico, especialmente em superfícies que operam a baixas temperaturas, devido à sua baixa densidade aparente e baixo coeficiente de condutividade térmica.',
   specs: {
@@ -42,24 +42,11 @@ const productsData = {
     'Aplicações Típicas': 'Isolamento térmico em tubulações, câmaras frias, equipamentos e superfícies com baixas temperaturas',
     'Vantagens': 'Alta eficiência térmica, durabilidade, leveza'
   },
-  gallery: ['assets/images/poliuretano.png']
-},
-'rebites': {
-  name: 'Rebites',
-  image: 'assets/images/rebites.png',
-  summary: 'Fixadores utilizados para unir permanentemente peças, disponíveis em diversos materiais e tipos.',
-  description: 'Os rebites são fixadores usados para unir duas ou mais peças permanentemente. Há uma ampla variedade de tipos, desde os comuns de repuxo em alumínio até os de alta resistência estrutural, atendendo diferentes necessidades industriais. Podem ser encontrados em materiais como alumínio, aço e inox, oferecendo durabilidade e confiabilidade na fixação.',
-  specs: {
-    'Material': 'Alumínio, aço, inox',
-    'Tipos': 'Repuxo, estrutural, diversos modelos conforme aplicação',
-    'Aplicações Típicas': 'União permanente de peças em linhas industriais, estruturas metálicas e montagens diversas',
-    'Vantagens': 'Alta resistência, durabilidade, variedade de tipos e materiais'
-  },
-  gallery: ['assets/images/rebites.png']
+  gallery: ['assets/images/produtos/poliuretano.png']
 },
 'revestimentos-metalicos': {
   name: 'Revestimentos Metálicos',
-  image: 'assets/images/revestimentosmetalicos.png',
+  image: 'assets/images/produtos/revestimentosmetalicos.png',
   summary: 'Chapas e bobinas metálicas para revestimento e proteção mecânica de isolantes térmicos.',
   description: 'Os revestimentos metálicos são recomendados para proteger e revestir isolantes térmicos em equipamentos e tubulações. Fornecidos em chapas ou bobinas, oferecem proteção mecânica resistente, ótimo acabamento e podem ser encontrados em diversas espessuras, garantindo durabilidade e eficiência em aplicações industriais.',
   specs: {
@@ -68,11 +55,11 @@ const productsData = {
     'Aplicações Típicas': 'Revestimento de isolantes térmicos em tubulações e equipamentos industriais',
     'Vantagens': 'Proteção mecânica resistente, ótimo acabamento, durabilidade e eficiência'
   },
-  gallery: ['assets/images/revestimentosmetalicos.png']
+  gallery: ['assets/images/produtos/revestimentosmetalicos.png']
 },
 'aluminio-e-acessorios': {
   name: 'Alumínio e Acessórios',
-  image: 'assets/images/aluminio.png',
+  image: 'assets/images/produtos/aluminio.png',
   summary: 'Chapas, bobinas e acessórios metálicos diversos para aplicações industriais e de construção.',
   description: 'Fornecemos uma ampla variedade de chapas e bobinas de alumínio, aço galvanizado, aço inox e alumínio corrugado, com ou sem barreira. Também oferecemos telhas trapezoidais, asfaltos para impermeabilização, ferro chato, arame recozido, parafusos e rebites, garantindo soluções completas para construção, revestimentos e projetos industriais.',
   specs: {
@@ -80,22 +67,11 @@ const productsData = {
     'Aplicações Típicas': 'Construção civil, projetos industriais, revestimentos metálicos, impermeabilização, estruturas e montagem de equipamentos.',
     'Vantagens': 'Variedade de materiais; Resistência e durabilidade; Adequado para diferentes aplicações industriais e construtivas.'
   },
-  gallery: ['assets/images/aluminio.png']
-},
-'broca': {
-  name: 'Broca',
-  image: 'assets/images/broca.png',
-  summary: 'Acessório para furadeiras, utilizado para perfuração em diversos materiais.',
-  description: 'A broca é um acessório indispensável para o uso de furadeiras. Permite realizar furos cilíndricos em superfícies como madeira, ferro, concreto e outros materiais, oferecendo precisão e eficiência em trabalhos de construção e manutenção.',
-  specs: {
-    'Aplicações Típicas': 'Furos em madeira, ferro, concreto e outros materiais.',
-    'Vantagens': 'Versatilidade; Indispensável para perfuração; Compatível com diversas furadeiras.'
-  },
-  gallery: ['assets/images/broca.png']
+  gallery: ['assets/images/produtos/aluminio.png']
 },
 'espuma-elastomerica': {
   name: 'Espuma Elastomérica',
-  image: 'assets/images/espumaelastomerica.png',
+  image: 'assets/images/produtos/elastomerica.png',
   summary: 'Isolante térmico em tubos, mantas e fitas auto-adesivas, feito de borracha sintética de alta densidade.',
   description: 'A Espuma Elastomérica é um isolante térmico fornecido em tubos, mantas e fitas auto-adesivas. Produzida a partir de borracha sintética de alta densidade (60±6 kg/m³), oferece excelente coeficiente de condutividade térmica (0,025 kcal/m.h °C), sendo ideal para aplicações de isolamento em sistemas de tubulação, refrigeração e climatização.',
   specs: {
@@ -105,11 +81,11 @@ const productsData = {
     'Formatos Disponíveis': 'Tubos, mantas e fitas auto-adesivas',
     'Aplicações Típicas': 'Isolamento térmico em tubulações, sistemas de refrigeração e climatização.'
   },
-  gallery: ['assets/images/espumaelastomerica.png']
+  gallery: ['assets/images/produtos/elastomerica.png']
 },
 'fibra-ceramica': {
   name: 'Fibra Cerâmica',
-  image: 'assets/images/fibraceramica.png',
+  image: 'assets/images/produtos/FibraCeramica.png',
   summary: 'Manta leve e resistente, feita de fibra cerâmica, ideal para isolamento térmico em locais de difícil acesso.',
   description: 'A Manta de Fibra Cerâmica possui aparência semelhante a algodão prensado, sendo leve e de fácil manuseio em locais de difícil acesso. Fabricada a partir da eletro fusão de alumina com sílica, é totalmente isenta de amianto. Oferece excepcional resistência mecânica, grande capacidade de isolamento térmico, estabilidade química e térmica, boa resistência à tração e à corrosão, além de baixa condutibilidade térmica e baixíssimo armazenamento de calor.',
   specs: {
@@ -119,11 +95,11 @@ const productsData = {
     'Resistência': 'Boa resistência mecânica, à tração e à corrosão',
     'Aplicações Típicas': 'Isolamento térmico em caldeiras, fornos, estufas e locais de difícil acesso'
   },
-  gallery: ['assets/images/fibraceramica.png']
+  gallery: ['assets/images/produtos/FibraCeramica.png']
 },
 'isopor': {
   name: 'Isopor',
-  image: 'assets/images/isopor.png',
+  image: 'assets/images/produtos/isopor.png',
   summary: 'Placas auto-extinguíveis para forro, com ou sem revestimento acrílico, ideais para conforto térmico e bom acabamento.',
   description: 'As Placas de Isopor para forro possuem característica auto-extinguível e podem vir com ou sem revestimento na face aparente em textura acrílica fosca branca. De fácil aplicação, são indicadas para indústrias, supermercados, lojas e residências, oferecendo conforto térmico, bom acabamento e baixo custo.',
   specs: {
@@ -132,11 +108,11 @@ const productsData = {
     'Propriedades': 'Auto-extinguível, fácil aplicação, baixo custo',
     'Aplicações Típicas': 'Forros em indústrias, supermercados, lojas e residências'
   },
-  gallery: ['assets/images/isopor.png']
+  gallery: ['assets/images/produtos/isopor.png']
 },
 'jaqueta-termica': {
   name: 'Jaqueta Térmica',
-  image: 'assets/images/jaquetatermica.png',
+  image: 'assets/images/produtos/jaquetatermica.png',
   summary: 'Isolante térmico removível e reutilizável, resistente ao fogo e de alta qualidade.',
   description: 'As jaquetas térmicas são isolantes removíveis e reutilizáveis, confeccionadas com material resistente ao fogo e de qualidade comprovada. Podem ser aplicadas em equipamentos e tubulações que necessitem de controle térmico e proteção contra calor.',
   specs: {
@@ -144,7 +120,7 @@ const productsData = {
     'Características': 'Removível, reutilizável, alta durabilidade',
     'Aplicações Típicas': 'Proteção térmica em equipamentos, tubulações e sistemas industriais'
   },
-  gallery: ['assets/images/jaquetatermica.png']
+  gallery: ['assets/images/produtos/jaquetatermica.png']
 },
         }
     },
@@ -155,12 +131,12 @@ const productsData = {
         subcategories: {
             'isopaineis': {
                 subcategoryName: 'Isopainéis',
-                subcategoryImage: 'assets/images/montagemiso.png',
+                subcategoryImage: 'assets/images/estoqueiso.jpg',
                 subcategorySummary: 'Painéis com núcleo em EPS ou PIR para o máximo desempenho em isolamento térmico.',
                 products: {
                     'painel-easyclean': {
   name: 'Painel EasyClean',
-  image: 'assets/images/paineleasyclean.png',
+  image: 'assets/images/produtos/Painel EasyClean.jpg',
   summary: 'Painel com superfície lisa e sistema de encaixes para acabamento higiênico e resistência mecânica e térmica, ideal para salas limpas e divisórias de escritório.',
   description: 'O Painel EasyClean possui superfície lisa e um sistema de encaixes que garante acabamento higiênico-sanitário e resistência mecânica e térmica. A montagem é fácil, rápida e modular. É indicado para laboratórios químicos, de alimentos, análises clínicas, produção de remédios, fabricação de satélites espaciais, e salas de operação.',
   specs: {
@@ -174,11 +150,11 @@ const productsData = {
     'Comprimento': 'Mínimo 2.500 mm e máximo 12.000 mm',
     'Observação': 'Para densidade do PIR inferior a 38 kg/m³, consulte o departamento comercial'
   },
-  gallery: ['assets/images/paineleasyclean.png']
+  gallery: ['assets/images/produtos/Painel EasyClean.jpg']
 },
 'painel-easyfrigo': {
   name: 'Painel EasyFrigo',
-  image: 'assets/images/paineleasyfrigo.png',
+  image: 'assets/images/produtos/Painel EasyFrigo PIR.jpg',
   summary: 'Painel frigorífico com vedação perfeita, isolamento térmico e resistência a impactos, ideal para ambientes com temperatura controlada.',
   description: 'O Painel EasyFrigo garante perfeita vedação, excelente isolamento térmico e maior resistência a impactos. Sua montagem é fácil, rápida e modular. Fabricado em linhas contínuas automáticas, assegura qualidade, performance térmica e durabilidade, sendo ideal para câmaras frigoríficas, túneis de congelamento, centros de distribuição, indústrias de alimentos e bebidas, abatedouros e laticínios.',
   specs: {
@@ -192,11 +168,11 @@ const productsData = {
     'Comprimento': 'Mínimo 2.500 mm e máximo 12.000 mm',
     'Acabamento Padrão': 'Rib 40 com opção de acabamento liso'
   },
-  gallery: ['assets/images/paineleasyfrigo.png']
+  gallery: ['assets/images/produtos/Painel EasyFrigo PIR.jpg']
 },
 'painel-easywall': {
   name: 'Painel EasyWall',
-  image: 'assets/images/paineleasywall.png',
+  image: 'assets/images/produtos/Painel EasyWall.jpg',
   summary: 'Painel para fachadas com núcleo PIR, revestimento em aço e sistema de encaixe invisível, ideal para projetos arquitetônicos e montagem rápida.',
   description: 'O Painel EasyWall proporciona beleza arquitetônica, versatilidade e isolamento térmico eficiente. Com núcleo PIR e revestimento em aço galvanizado ou galvalume pré-pintado, oferece montagem fácil, rápida e modular. Fabricado em linhas contínuas com injeção de espuma em alta pressão, garante uniformidade, maior performance térmica e resistência. Ideal para projetos complexos com design diferenciado.',
   specs: {
@@ -210,14 +186,15 @@ const productsData = {
     'Comprimento': 'Mínimo 2.500 mm e máximo 10.000 mm',
     'Acabamentos Disponíveis': 'Micro Rib e Rib 40'
   },
-  gallery: ['assets/images/paineleasywall.png']
+  gallery: ['assets/images/produtos/perfilT.png']
 },
+
 
                 }
             },
             'portas': {
                 subcategoryName: 'Portas',
-                subcategoryImage: 'https://placehold.co/600x400/9ca3af/ffffff?text=Porta+Frigorífica',
+                subcategoryImage: 'assets/images/produtos/portaprod.png',
                 subcategorySummary: 'Portas de correr ou de giro para garantir a vedação e o fácil acesso à sua câmara fria.',
                 products: {
                     'porta-abrigo-doca': {
@@ -360,7 +337,7 @@ const productsData = {
             },
             'perfis': {
                 subcategoryName: 'Perfis',
-                subcategoryImage: 'https://placehold.co/600x400/d1d5db/ffffff?text=Perfis',
+                subcategoryImage: 'assets/images/perfilprod.jpg',
                 subcategorySummary: 'Cantoneiras, perfis U e outros acabamentos para uma instalação perfeita e higiênica.',
                 products: {
                     'perfil-l-40x100': {
@@ -524,23 +501,63 @@ const productsData = {
   },
   gallery: ['assets/images/produtos/perfil_u_200x3000mm.jpg']
 },
+'perfil-t-aluminio-branco': {
+  name: 'Perfil T 6000mm',
+  image: 'assets/images/produtos/perfilT.png',
+  summary: 'Perfil T em alumínio de alta resistência, com pintura branca para acabamento de isopainéis.',
+  description: 'O Perfil T é produzido em aço galvalume de alta qualidade, com espessura mínima de 0,0043 mm. Possui revestimento com pintura eletrostática de um lado e prime do outro, além de proteção em PVC (plástico filme), garantindo resistência, durabilidade e excelente acabamento para aplicações estruturais e industriais.',
+  specs: {
+    'Material': 'Aço galvalume',
+    'Cor / Acabamento': 'Branco (pintura eletrostática)',
+    'Resistência': 'Alta durabilidade e resistência à corrosão',
+    'Proteção': 'PVC (plástico filme)',
+    'Aplicações Típicas': 'Montagem e acabamento de isopainéis, divisórias e câmaras frias.',
+    'Comprimento Padrão': '6000 mm'
+  },
+  gallery: ['assets/images/produtos/perfilT.png']
+},
+
 
                 }
             },
             'acessorios': {
                 subcategoryName: 'Acessórios',
-                subcategoryImage: 'https://placehold.co/600x400/52525b/ffffff?text=Acessórios',
+                subcategoryImage: 'assets/images/produtos/acessprod.webp',
                 subcategorySummary: 'Parafusos, selantes, e outros itens essenciais para a montagem de câmaras frias.',
                 products: {
                     // O usuário irá adicionar itens aqui. Vou deixar um exemplo.
                     'parafusos': {
                         name: 'Parafusos de Fixação',
-                        image: 'https://placehold.co/600x400/52525b/ffffff?text=Parafusos',
+                        image: 'assets/images/produtos/parafusos.png',
                         summary: 'Parafusos auto-brocantes para fixação de painéis em estruturas metálicas.',
                         description: 'Fornecemos parafusos de alta qualidade, com tratamento anti-corrosão, arruela de vedação em EPDM para garantir a estanqueidade da fixação dos painéis isotérmicos.',
                         specs: { 'Tipo': 'Auto-brocante', 'Material': 'Aço Zincado', 'Vedação': 'Arruela EPDM' },
-                        gallery: ['https://placehold.co/600x400/52525b/ffffff?text=Parafusos']
+                        gallery: ['assets/images/produtos/parafusos.png']
                     },
+                    'rebites': {
+  name: 'Rebites',
+  image: 'assets/images/produtos/rebites.png',
+  summary: 'Fixadores utilizados para unir permanentemente peças, disponíveis em diversos materiais e tipos.',
+  description: 'Os rebites são fixadores usados para unir duas ou mais peças permanentemente. Há uma ampla variedade de tipos, desde os comuns de repuxo em alumínio até os de alta resistência estrutural, atendendo diferentes necessidades industriais. Podem ser encontrados em materiais como alumínio, aço e inox, oferecendo durabilidade e confiabilidade na fixação.',
+  specs: {
+    'Material': 'Alumínio, aço, inox',
+    'Tipos': 'Repuxo, estrutural, diversos modelos conforme aplicação',
+    'Aplicações Típicas': 'União permanente de peças em linhas industriais, estruturas metálicas e montagens diversas',
+    'Vantagens': 'Alta resistência, durabilidade, variedade de tipos e materiais'
+  },
+  gallery: ['assets/images/produtos/rebites.png']
+},
+'broca': {
+  name: 'Broca',
+  image: 'assets/images/produtos/broca.png',
+  summary: 'Acessório para furadeiras, utilizado para perfuração em diversos materiais.',
+  description: 'A broca é um acessório indispensável para o uso de furadeiras. Permite realizar furos cilíndricos em superfícies como madeira, ferro, concreto e outros materiais, oferecendo precisão e eficiência em trabalhos de construção e manutenção.',
+  specs: {
+    'Aplicações Típicas': 'Furos em madeira, ferro, concreto e outros materiais.',
+    'Vantagens': 'Versatilidade; Indispensável para perfuração; Compatível com diversas furadeiras.'
+  },
+  gallery: ['assets/images/produtos/broca.png']
+},
                 },
             }
         }

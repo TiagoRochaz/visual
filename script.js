@@ -1,134 +1,39 @@
 // --- LÓGICA DE NAVEGAÇÃO E PÁGINAS ---
-const mainPage = document.getElementById('main-page');
-const portfolioPage = document.getElementById('portfolio-page');
 const servicesListPage = document.getElementById('services-list-page');
 const serviceDetailPage = document.getElementById('service-detail-page');
-const aboutPage = document.getElementById('about-page');
 const productsCatalogPage = document.getElementById('products-catalog-page');
 const productListPage = document.getElementById('product-list-page');
 const productDetailPage = document.getElementById('product-detail-page');
-const allPages = [mainPage, portfolioPage, servicesListPage, serviceDetailPage, aboutPage, productsCatalogPage, productListPage, productDetailPage].filter(Boolean);
 
 function showPage(pageToShow) {
     window.scrollTo(0, 0);
-    allPages.forEach(page => page.classList.add('hidden'));
+    // Hide all major page containers
+    [servicesListPage, serviceDetailPage, productsCatalogPage, productListPage, productDetailPage].filter(Boolean).forEach(page => page.classList.add('hidden'));
+    // Show the target page
     pageToShow.classList.remove('hidden');
 }
 
 // Event listeners para navegação
 document.addEventListener('DOMContentLoaded', function() {
-    // Navegação principal
-    const navLogo = document.getElementById('nav-logo');
-    if (navLogo) {
-        navLogo.addEventListener('click', (e) => {
-            if (mainPage) {
-                e.preventDefault();
-                showPage(mainPage);
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
-    }
-    
-    // Links de serviços e produtos
-    document.querySelectorAll('.view-service-list-page').forEach(el => 
-        el.addEventListener('click', (e) => { 
-            if (servicesListPage) { 
-                e.preventDefault(); 
-                showPage(servicesListPage); 
-            } else {
-                window.location.href = 'servicos.html';
-            }
-        })
-    );
-    
-    document.querySelectorAll('.view-products-catalog-page').forEach(el => 
-        el.addEventListener('click', (e) => { 
-            if (productsCatalogPage) {
-                e.preventDefault(); 
-                showPage(productsCatalogPage); 
-            } else {
-                window.location.href = 'produtos.html';
-            }
-        })
-    );
-    
-    // Navegação para portfolio
-    if (document.getElementById('nav-portfolio')) {
-        document.getElementById('nav-portfolio').addEventListener('click', (e) => { 
-            if (portfolioPage) { 
-                e.preventDefault(); 
-                showPage(portfolioPage); 
-            }
-        });
-    }
-    
-    if (document.getElementById('mobile-nav-portfolio')) {
-        document.getElementById('mobile-nav-portfolio').addEventListener('click', (e) => { 
-            if (portfolioPage) { 
-                e.preventDefault(); 
-                showPage(portfolioPage); 
-            }
-        });
-    }
-    
-    // Navegação para sobre
-    if (document.getElementById('nav-about')) {
-        document.getElementById('nav-about').addEventListener('click', (e) => { 
-            if (aboutPage) { 
-                e.preventDefault(); 
-                showPage(aboutPage); 
-            }
-        });
-    }
-    
-    if (document.getElementById('mobile-nav-about')) {
-        document.getElementById('mobile-nav-about').addEventListener('click', (e) => { 
-            if (aboutPage) { 
-                e.preventDefault(); 
-                showPage(aboutPage); 
-            }
-        });
-    }
-
     // Botão para ver portfolio completo
     const viewFullPortfolioBtn = document.getElementById('view-full-portfolio');
     if (viewFullPortfolioBtn) {
         viewFullPortfolioBtn.addEventListener('click', () => {
-            if (portfolioPage) {
-                showPage(portfolioPage);
-            } else {
-                window.location.href = 'portfolio.html';
-            }
+            window.location.href = 'portfolio.html';
         });
     }
-    
-    // Botões voltar para main
-    document.querySelectorAll('.back-to-main').forEach(btn => 
-        btn.addEventListener('click', () => {
-            if (mainPage) {
-                showPage(mainPage);
-            } else {
-                window.location.href = 'index.html#inicio';
-            }
-        })
-    );
-    
+
     // Links de navegação interna (ancoras)
     document.querySelectorAll('.nav-link').forEach(link => {
         const href = link.getAttribute('href');
         if (href && href.startsWith('#') && !link.id.includes('portfolio') && !link.id.includes('services') && !link.id.includes('about')) {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (mainPage && mainPage.classList.contains('hidden')) {
-                    showPage(mainPage);
-                }
-                setTimeout(() => {
+                // Smooth scroll to anchor
                     const targetElement = document.querySelector(href);
                     if (targetElement) {
                         targetElement.scrollIntoView({ behavior: 'smooth' });
                     }
-                }, 100);
             });
         }
     });
@@ -294,13 +199,7 @@ function showProductListPage(categoryId) {
     `;
 
     if (productListPage) {
-        // Se estivermos no index.html (SPA), envolvemos o conteúdo em um <main>.
-        // Se não, injetamos diretamente, pois a estrutura já existe em produtos.html.
-        if (document.getElementById('main-page')) {
-            productListPage.innerHTML = `<main class="product-catalog-bg py-20"><div class="container mx-auto px-6">${pageContent}</div></main>`;
-        } else {
-            productListPage.innerHTML = pageContent;
-        }
+        productListPage.innerHTML = pageContent;
         showPage(productListPage);
     }
 }
@@ -408,11 +307,7 @@ function showProductDetailPage(categoryId, subcategoryId, productId) {
     `;
 
     if (productDetailPage) {
-        if (document.getElementById('main-page')) {
-            productDetailPage.innerHTML = `<main class="product-catalog-bg py-20"><div class="container mx-auto px-6">${pageContent}</div></main>`;
-        } else {
-            productDetailPage.innerHTML = pageContent;
-        }
+        productDetailPage.innerHTML = pageContent;
         showPage(productDetailPage);
     }
 }
@@ -420,7 +315,11 @@ function showProductDetailPage(categoryId, subcategoryId, productId) {
 // Event listeners para produtos
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('view-product-list-page')) {
-        showProductListPage(e.target.dataset.category);
+        const categoryId = e.target.dataset.category;
+        // Carrega a lista de produtos ou a lista de subcategorias na mesma página.
+        if (productsData[categoryId]) {
+            showProductListPage(categoryId);
+        }
     }
     if (e.target.classList.contains('view-product-detail-page')) {
         const categoryId = e.target.dataset.category;
@@ -429,7 +328,7 @@ document.addEventListener('click', (e) => {
         showProductDetailPage(categoryId, subcategoryId, productId);
     }
     if (e.target.classList.contains('back-to-catalog')) {
-        if (productsCatalogPage) showPage(productsCatalogPage);
+        if (productsCatalogPage) showPage(productsCatalogPage); // SPA-like behavior on products.html
         else window.location.href = 'produtos.html';
     }
     if (e.target.classList.contains('back-to-product-list')) {
@@ -512,9 +411,8 @@ function showServiceDetail(serviceId) {
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('view-service-detail')) {
         const serviceId = e.target.dataset.service;
-        if (serviceId === 'produtos') {
-            if (productsCatalogPage) showPage(productsCatalogPage);
-            else window.location.href = 'produtos.html';
+        if (serviceId === 'produtos') { // O card de produtos redireciona para a página de produtos
+            window.location.href = 'produtos.html';
         } else {
             showServiceDetail(serviceId);
         }
@@ -524,15 +422,7 @@ document.addEventListener('click', (e) => {
         else window.location.href = 'servicos.html';
     }
     if (e.target.classList.contains('contact-from-service-button')) {
-        if (mainPage) {
-            showPage(mainPage);
-            setTimeout(() => {
-                const contato = document.querySelector('#contato');
-                if (contato) contato.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        } else {
-            window.location.href = 'index.html#contato';
-        }
+        window.location.href = 'index.html#contato';
     }
 });
 
