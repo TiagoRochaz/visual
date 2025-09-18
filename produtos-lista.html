@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+<body id="produtos-lista-body" class="bg-white text-gray-800 flex flex-col min-h-screen">
 
     <!-- Cabeçalho e Navegação -->
     <header class="bg-white shadow-md sticky top-0 z-50">
@@ -61,6 +61,11 @@
         </div>
     </footer>
 
+    <!-- Botão Voltar ao Topo -->
+    <button id="back-to-top-button" class="back-to-top-button hidden justify-center items-center" aria-label="Voltar ao topo">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
     <!-- Botão Flutuante do WhatsApp -->
     <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="whatsapp-button" aria-label="Fale conosco pelo WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 16 16">
@@ -70,16 +75,5 @@
 
     <script src="data-products.js"></script>
     <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const categoryId = urlParams.get('category');
-            const subcategoryId = urlParams.get('subcategory');
-
-            if (categoryId && subcategoryId && typeof renderSubcategoryProducts === 'function') {
-                renderSubcategoryProducts(categoryId, subcategoryId);
-            }
-        });
-    </script>
 </body>
 </html>

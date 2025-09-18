@@ -1,16 +1,54 @@
-// --- LÓGICA DE NAVEGAÇÃO E PÁGINAS ---
-const servicesListPage = document.getElementById('services-list-page');
-const serviceDetailPage = document.getElementById('service-detail-page');
-const productsCatalogPage = document.getElementById('products-catalog-page');
-const productListPage = document.getElementById('product-list-page');
-const productDetailPage = document.getElementById('product-detail-page');
+// --- LÓGICA DE NAVEGAÇÃO SPA (Single Page Application) E ROTEAMENTO ---
+const pages = {
+    servicesList: document.getElementById('services-list-page'),
+    serviceDetail: document.getElementById('service-detail-page'),
+    productsCatalog: document.getElementById('products-catalog-page'),
+    productList: document.getElementById('product-list-page'),
+    productDetail: document.getElementById('product-detail-page'),
+};
 
 function showPage(pageToShow) {
     window.scrollTo(0, 0);
-    // Hide all major page containers
-    [servicesListPage, serviceDetailPage, productsCatalogPage, productListPage, productDetailPage].filter(Boolean).forEach(page => page.classList.add('hidden'));
-    // Show the target page
-    pageToShow.classList.remove('hidden');
+    Object.values(pages).filter(Boolean).forEach(page => page.classList.add('hidden'));
+    if (pageToShow) {
+        pageToShow.classList.remove('hidden');
+    }
+}
+
+function handleRouting() {
+    const params = new URLSearchParams(window.location.search);
+    const serviceId = params.get('service');
+    const categoryId = params.get('category');
+    const subcategoryId = params.get('subcategory');
+    const productId = params.get('product');
+    const bodyId = document.body.id;
+
+    if (bodyId === 'servicos-body') {
+        if (serviceId) {
+            showServiceDetail(serviceId, false);
+        } else {
+            showPage(pages.servicesList);
+        }
+    }
+
+    if (bodyId === 'produtos-body') {
+        if (productId) {
+            showProductDetailPage(categoryId, subcategoryId, productId, false);
+        } else if (categoryId) {
+            showProductListPage(categoryId, false);
+        } else {
+            showPage(pages.productsCatalog);
+        }
+    }
+
+    if (bodyId === 'produtos-lista-body') {
+        if (productId) {
+            showProductDetailPage(categoryId, subcategoryId, productId, false);
+        } else if (categoryId && subcategoryId) {
+            renderSubcategoryProducts(categoryId, subcategoryId);
+            showPage(pages.productList);
+        }
+    }
 }
 
 // Event listeners para navegação
@@ -37,6 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    window.addEventListener('popstate', handleRouting);
+    handleRouting(); // Roda na carga inicial da página
 });
 
 // --- LÓGICA DE RENDERIZAÇÃO ---
@@ -140,7 +181,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // --- LÓGICA PÁGINAS DE PRODUTOS ---
-function showProductListPage(categoryId) {
+function showProductListPage(categoryId, push = true) {
+    if (push) {
+        const url = new URL(window.location);
+        url.searchParams.set('category', categoryId);
+        url.searchParams.delete('subcategory');
+        url.searchParams.delete('product');
+        history.pushState({ page: 'productList', categoryId }, '', url);
+    }
+
     if (typeof productsData === 'undefined' || !productsData[categoryId]) return;
     
     const category = productsData[categoryId];
@@ -151,7 +200,7 @@ function showProductListPage(categoryId) {
         Object.keys(category.subcategories).forEach(subcatId => {
             const subcategory = category.subcategories[subcatId];
             productsHtml += `
-                <a href="produtos-lista.html?category=${categoryId}&subcategory=${subcatId}" class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
+                <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
                     <div class="relative h-56">
                         <img src="${subcategory.subcategoryImage}" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -159,9 +208,9 @@ function showProductListPage(categoryId) {
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <p class="text-gray-400 flex-grow">${subcategory.subcategorySummary}</p>
-                        <span class="mt-4 text-blue-400 font-semibold self-start">Explorar Itens &rarr;</span>
+                        <button class="view-subcategory-list-page mt-4 text-blue-400 font-semibold self-start" data-category="${categoryId}" data-subcategory="${subcatId}">Explorar Itens &rarr;</button>
                     </div>
-                </a>
+                </div>
             `;
         });
     }
@@ -194,13 +243,13 @@ function showProductListPage(categoryId) {
             ${productsHtml}
         </div>
         <div class="text-center mt-12">
-            <button class="back-to-catalog text-gray-400 font-semibold">&larr; Voltar ao Catálogo</button>
+            <button class="back-button text-gray-400 font-semibold">&larr; Voltar ao Catálogo</button>
         </div>
     `;
 
-    if (productListPage) {
-        productListPage.innerHTML = pageContent;
-        showPage(productListPage);
+    if (pages.productList) {
+        pages.productList.innerHTML = pageContent;
+        showPage(pages.productList);
     }
 }
 
@@ -242,12 +291,23 @@ function renderSubcategoryProducts(categoryId, subcategoryId) {
             <p class="text-gray-400 mt-2">Explore os produtos disponíveis nesta subcategoria.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">${productsHtml}</div>
-        <div class="text-center mt-12"><a href="produtos.html" class="text-gray-400 font-semibold">&larr; Voltar ao Catálogo Principal</a></div>
+        <div class="text-center mt-12"><a href="produtos.html" class="text-gray-400 font-semibold">&larr; Voltar às Categorias</a></div>
     `;
     container.innerHTML = pageContent;
 }
 
-function showProductDetailPage(categoryId, subcategoryId, productId) {
+function showProductDetailPage(categoryId, subcategoryId, productId, push = true) {
+    if (push) {
+        const url = new URL(window.location);
+        url.searchParams.set('category', categoryId);
+        if (subcategoryId) {
+            url.searchParams.set('subcategory', subcategoryId);
+        } else {
+            url.searchParams.delete('subcategory');
+        }
+        url.searchParams.set('product', productId);
+        history.pushState({ page: 'productDetail', categoryId, subcategoryId, productId }, '', url);
+    }
     if (typeof productsData === 'undefined' || !productsData[categoryId]) return;
     
     const category = productsData[categoryId];
@@ -310,45 +370,52 @@ function showProductDetailPage(categoryId, subcategoryId, productId) {
             </div>
         </div>
             <div class="text-center mt-16">
-            <button class="back-to-product-list text-gray-400 font-semibold" data-category="${categoryId}" data-subcategory="${subcategoryId || ''}">&larr; Voltar para ${backButtonText}</button>
+            <button class="back-button text-gray-400 font-semibold">&larr; Voltar para ${backButtonText}</button>
         </div>
     `;
 
-    if (productDetailPage) {
-        productDetailPage.innerHTML = pageContent;
-        showPage(productDetailPage);
+    if (pages.productDetail) {
+        pages.productDetail.innerHTML = pageContent;
+        showPage(pages.productDetail);
     }
 }
 
 // Event listeners para produtos
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('view-product-list-page')) {
+        e.preventDefault();
         const categoryId = e.target.dataset.category;
         // Carrega a lista de produtos ou a lista de subcategorias na mesma página.
         if (productsData[categoryId]) {
             showProductListPage(categoryId);
         }
     }
+    if (e.target.classList.contains('view-subcategory-list-page')) {
+        e.preventDefault();
+        const categoryId = e.target.dataset.category;
+        const subcategoryId = e.target.dataset.subcategory;
+        window.location.href = `produtos-lista.html?category=${categoryId}&subcategory=${subcategoryId}`;
+    }
     if (e.target.classList.contains('view-product-detail-page')) {
+        e.preventDefault();
         const categoryId = e.target.dataset.category;
         const subcategoryId = e.target.dataset.subcategory; // Can be undefined
         const productId = e.target.dataset.product;
-        showProductDetailPage(categoryId, subcategoryId, productId);
+        showProductDetailPage(categoryId, subcategoryId, productId, true);
     }
-    if (e.target.classList.contains('back-to-catalog')) {
-        if (productsCatalogPage) showPage(productsCatalogPage); // SPA-like behavior on products.html
-        else window.location.href = 'produtos.html';
-    }
-    if (e.target.classList.contains('back-to-product-list')) {
-        // This is more efficient and correctly returns to the previous list (category or subcategory)
-        if (productListPage) {
-            showPage(productListPage);
-        }
+    if (e.target.classList.contains('back-button')) {
+        e.preventDefault();
+        history.back();
     }
 });
 
 // --- LÓGICA PÁGINA DE DETALHE DE SERVIÇO ---
-function showServiceDetail(serviceId) {
+function showServiceDetail(serviceId, push = true) {
+    if (push) {
+        const url = new URL(window.location);
+        url.searchParams.set('service', serviceId);
+        history.pushState({ page: 'serviceDetail', serviceId }, '', url);
+    }
     if (typeof servicesData === 'undefined') return;
     
     const service = servicesData[serviceId];
@@ -372,8 +439,8 @@ function showServiceDetail(serviceId) {
         subServicesHtml += '</div>';
     }
 
-    if (serviceDetailPage) {
-        serviceDetailPage.innerHTML = `
+    if (pages.serviceDetail) {
+        pages.serviceDetail.innerHTML = `
             <main class="bg-white">
                 <section class="relative h-72">
                     <img src="${service.image}" class="w-full h-full object-cover">
@@ -412,30 +479,32 @@ function showServiceDetail(serviceId) {
                                         <span>WhatsApp</span>
                                     </a>
                                 </div>
-                                <button class="back-to-services mt-3 w-full bg-gray-600 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-700 transition duration-300">Voltar aos Serviços</button>
+                                <button class="back-button mt-3 w-full bg-gray-600 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-700 transition duration-300">Voltar aos Serviços</button>
                             </div>
                         </div>
                     </div>
                 </section>
             </main>
         `;
-        showPage(serviceDetailPage);
+        showPage(pages.serviceDetail);
     }
 }
 
 // Event listeners para detalhes de serviços
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('view-service-detail')) {
+        e.preventDefault();
         const serviceId = e.target.dataset.service;
         if (serviceId === 'produtos') { // O card de produtos redireciona para a página de produtos
             window.location.href = 'produtos.html';
         } else {
-            showServiceDetail(serviceId);
+            // Se estiver na página de serviços, usa a navegação SPA. Senão, redireciona.
+            if (document.body.id === 'servicos-body') {
+                showServiceDetail(serviceId, true);
+            } else {
+                window.location.href = `servicos.html?service=${serviceId}`;
+            }
         }
-    }
-    if (e.target.classList.contains('back-to-services')) {
-        if (servicesListPage) showPage(servicesListPage);
-        else window.location.href = 'servicos.html';
     }
     if (e.target.classList.contains('contact-from-service-button')) {
         window.location.href = 'index.html#contato';
@@ -617,6 +686,27 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', () => { 
                 mobileMenu.classList.add('hidden'); 
             }); 
+        });
+    }
+});
+
+// --- LÓGICA DO BOTÃO VOLTAR AO TOPO ---
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('back-to-top-button');
+
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+                backToTopButton.classList.remove('hidden');
+                backToTopButton.classList.add('flex');
+            } else {
+                backToTopButton.classList.add('hidden');
+                backToTopButton.classList.remove('flex');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 });
