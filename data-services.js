@@ -2,7 +2,7 @@
 const servicesData = {
     'paineis-isotermicos': {
         title: 'Montagem de Painéis Isotérmicos',
-        image: 'assets/images/banneriso.png',
+        image: 'assets/images/Serviços/Rio Maria/Estocagem (2).jpg',
         summary: 'Montagem de câmaras frias, salas limpas e fachadas com painéis isotérmicos.',
         gallery: ['assets/images/Serviços/Rio Maria/Embalagem (3).jpg', 'assets/images/Serviços/Rio Maria/Embalagem (2).jpg', 'assets/images/Serviços/Rio Maria/Embalagem (4).jpg'],
         description: 'Mais do que uma simples montagem, nosso serviço de painéis isotérmicos é uma solução de engenharia completa para ambientes que exigem controle rigoroso de temperatura e higiene. Entendemos que cada grau Celsius economizado e cada padrão sanitário atendido representa um ganho direto para a sua operação. Por isso, nosso foco é entregar um sistema de isolamento que não seja um custo, mas sim um investimento estratégico com retorno garantido.',
@@ -23,7 +23,7 @@ const servicesData = {
     },
     'isolamento-tubulacoes': {
         title: 'Isolamento de Tubulações',
-        image: 'assets/images/bannertub.png',
+        image: 'assets/images/Serviços/SEBO/Digestor SEBO (3).jpg',
         summary: 'Aplicação de poliuretano e lã de rocha para linhas de refrigeração e aquecimento, com acabamento em alumínio.',
         gallery: ['assets/images/Serviços/Amambai/tubulaçao amanbai.jpg', 'assets/images/Serviços/SEBO/tubulaçao digestor 2.jpg', 'assets/images/Serviços/SEBO/IMG-20241112-WA0018.jpg'],
         description: 'O isolamento de tubulações é um dos investimentos com maior taxa de retorno em uma planta industrial. Cada metro de tubulação não isolada ou mal isolada é um ponto de perda de energia e dinheiro. Nosso serviço transforma esse passivo em um ativo, otimizando seu processo e protegendo sua infraestrutura e sua equipe.',
@@ -39,10 +39,10 @@ const servicesData = {
         pricingModel: 'O valor é calculado por metro linear, variando conforme o diâmetro da tubulação, a espessura do isolante e o tipo de acabamento. Peças especiais como curvas, flanges e válvulas possuem um valor de metro equivalente.'
     },
     'estruturas-solda': {
-        title: 'Montagem de Estruturas e Solda',
-        image: 'assets/images/montagemiso.png',
+        title: 'Montagem de Estruturas e Tubulações',
+        image: 'assets/images/Serviços/pipehack.jpg',
         summary: 'Montagem de tubulações, estruturas, plataformas de abate, trilhagens e serviços de solda industrial.',
-        gallery: ['assets/images/teste.png', 'assets/images/montagemiso.png'],
+        gallery: ['assets/images/Serviços/coberturafrigosul.png', 'assets/images/Serviços/tubamo.jpg', 'assets/images/Serviços/varginha.jpg'],
         description: 'Oferecemos soluções completas em montagem de estruturas metálicas, pipe racks e tubulações industriais. Nossa equipe de soldadores qualificados garante a execução de serviços de solda com alta precisão e segurança, seguindo as normas técnicas mais exigentes do mercado.',
         subServices: [
             { title: 'Solda TIG/MIG/Eletrodo', text: 'Executamos todos os tipos de solda industrial para união e reparo de componentes metálicos.' },

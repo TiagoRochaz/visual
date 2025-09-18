@@ -298,7 +298,15 @@ function showProductDetailPage(categoryId, subcategoryId, productId) {
                     <h3 class="text-2xl font-bold text-white mb-4">Especificações Técnicas</h3>
                     <ul>${specsHtml}</ul>
                 </div>
-                <button class="contact-from-service-button mt-6 w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300">Solicitar Orçamento</button>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button class="contact-from-service-button w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition duration-300">Solicitar Orçamento</button>
+                    <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.1-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
             </div>
         </div>
             <div class="text-center mt-16">
@@ -395,7 +403,15 @@ function showServiceDetail(serviceId) {
                                     <p class="text-sm text-gray-600"><strong>Prazo de Execução:</strong> ${service.executionTime}</p>
                                     <p class="text-sm text-gray-600"><strong>Modelo de Precificação:</strong> ${service.pricingModel}</p>
                                 </div>
-                                <button class="contact-from-service-button mt-6 w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition duration-300">Solicitar Orçamento</button>
+                                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <button class="contact-from-service-button w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition duration-300">Solicitar Orçamento</button>
+                                    <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2 text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.1-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                                        </svg>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                </div>
                                 <button class="back-to-services mt-3 w-full bg-gray-600 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-700 transition duration-300">Voltar aos Serviços</button>
                             </div>
                         </div>
@@ -493,7 +509,15 @@ function openModal(projectId) {
                 <div class="bg-gray-100 p-4 rounded-lg">
                     <h4 class="font-bold text-gray-800 mb-2">Destaques do Projeto</h4><ul class="space-y-2">${featuresHtml}</ul>
                 </div>
-                <button class="contact-from-service-button mt-6 bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition">Entrar em Contato</button>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <button class="contact-from-service-button w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition">Entrar em Contato</button>
+                    <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.1-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
             </div>
         </div>
     `;
@@ -600,36 +624,49 @@ document.addEventListener('DOMContentLoaded', function() {
 // --- LÓGICA DO CARROSSEL DE PARCEIROS ---
 document.addEventListener('DOMContentLoaded', function() {
     const partnersTrack = document.getElementById('partners-track');
-    const partnersCarousel = document.getElementById('partners-carousel');
-    
-    if (partnersTrack && typeof partnersData !== 'undefined') {
-        // Duplica os parceiros para criar o efeito de loop infinito
-        const allPartners = [...partnersData, ...partnersData];
 
-        // Para exibir 4 logos, cada um precisa de 25% do container.
-        // O track tem 16 logos (8 duplicados), então a largura total do track deve ser 16 * 25% = 400% do container.
-        partnersTrack.style.width = `${allPartners.length * 25}%`;
+    function updatePartnersCarousel() {
+        if (partnersTrack && typeof partnersData !== 'undefined') {
+            partnersTrack.innerHTML = ''; // Limpa para reconstruir em caso de redimensionamento
+            const isMobile = window.innerWidth < 768;
+            const itemsVisible = isMobile ? 1.5 : 6; // Exibe 1.5 logos no mobile para mais espaço e tamanho, 6 no desktop
+            const itemWidthPercent = 100 / itemsVisible;
 
-        allPartners.forEach(partner => {
-            const partnerDiv = document.createElement('div');
-            // A largura de cada item deve ser 1/16 da largura total do track (400%).
-            // 100% / 16 = 6.25%. Isso resulta em um tamanho renderizado de 6.25% de 400% = 25% do container, mantendo o tamanho desejado.
-            partnerDiv.className = 'flex-shrink-0 w-[6.25%] px-8 flex flex-col items-center justify-center';
-            
-            const img = document.createElement('img');
-            img.src = partner.logo;
-            img.alt = partner.name;
-            img.className = 'h-24 mx-auto grayscale hover:grayscale-0 transition duration-300';
-            
-            const p = document.createElement('p');
-            p.className = 'mt-2 text-sm font-semibold text-gray-600';
-            p.textContent = partner.name;
-            
-            partnerDiv.appendChild(img);
-            partnerDiv.appendChild(p);
-            partnersTrack.appendChild(partnerDiv);
-        });
+            // Duplica os parceiros para o efeito de loop
+            const allPartners = [...partnersData, ...partnersData];
+
+            // A largura total do track é o número total de parceiros * a largura de cada um
+            partnersTrack.style.width = `${allPartners.length * itemWidthPercent}%`;
+
+            allPartners.forEach(partner => {
+                const partnerDiv = document.createElement('div');
+                // A largura de cada item é 1/total_de_itens da largura do track (100% / 16 = 6.25%)
+                partnerDiv.className = 'flex-shrink-0 w-[6.25%] px-8 md:px-4 flex flex-col items-center justify-center';
+                
+                const img = document.createElement('img');
+                img.src = partner.logo;
+                img.alt = partner.name;
+                img.className = 'h-24 md:h-24 mx-auto grayscale hover:grayscale-0 transition duration-300';
+                
+                const p = document.createElement('p');
+                p.className = 'mt-2 text-center text-xs md:text-sm font-semibold text-gray-600';
+                p.textContent = partner.name;
+                
+                partnerDiv.appendChild(img);
+                partnerDiv.appendChild(p);
+                partnersTrack.appendChild(partnerDiv);
+            });
+        }
     }
+
+    updatePartnersCarousel(); // Executa na carga inicial
+
+    // Atualiza o carrossel ao redimensionar a janela para garantir a responsividade
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updatePartnersCarousel, 250);
+    });
 });
 
 // --- LÓGICA DOS GRÁFICOS ANIMADOS ---
@@ -637,7 +674,9 @@ function createDonutChart(elementId, value, color, unit = '%') {
     const element = document.getElementById(elementId);
     if (!element) return;
 
-    const width = 192, height = 192, margin = 5;
+    const isMobile = window.innerWidth < 768;
+    const size = isMobile ? 144 : 192; // Tamanho menor para mobile (144px), padrão (192px)
+    const width = size, height = size, margin = 5;
     const radius = Math.min(width, height) / 2 - margin;
 
     const svg = d3.select("#" + elementId)
@@ -669,7 +708,7 @@ function createDonutChart(elementId, value, color, unit = '%') {
     const text = svg.append("text")
         .attr("text-anchor", "middle")
         .attr("dy", ".35em")
-        .style("font-size", "2.5rem")
+        .style("font-size", isMobile ? "2rem" : "2.5rem") // Fonte menor para mobile
         .style("font-weight", "700")
         .style("fill", "white");
 
@@ -679,7 +718,9 @@ function createDonutChart(elementId, value, color, unit = '%') {
             .duration(1500)
             .tween("text", function() {
                 const i = d3.interpolate(0, finalValue * 100);
-                const format = unit === 'min' ? (d) => `${Math.round(d)}<tspan font-size="1rem">min</tspan>` : (d) => `${Math.round(d)}<tspan font-size="1.5rem">%</tspan>`;
+                const unitFontSize = isMobile ? "0.8rem" : "1rem";
+                const percentUnitFontSize = isMobile ? "1.2rem" : "1.5rem";
+                const format = unit === 'min' ? (d) => `${Math.round(d)}<tspan font-size="${unitFontSize}">min</tspan>` : (d) => `${Math.round(d)}<tspan font-size="${percentUnitFontSize}">%</tspan>`;
                 return function(t) {
                     // Usamos .html() para interpretar o <tspan>
                     d3.select(this).html(format(i(t)));
@@ -731,5 +772,82 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if(statsSection) {
         observer.observe(statsSection);
+    }
+});
+
+// --- LÓGICA DO VÍDEO RESPONSIVO DA PÁGINA INICIAL ---
+document.addEventListener('DOMContentLoaded', function() {
+    const heroVideo = document.getElementById('hero-video');
+
+    function setHeroVideoSource() {
+        // Esta função só deve rodar na página inicial onde o vídeo existe
+        if (heroVideo) {
+            const isMobile = window.innerWidth < 768;
+            const mobileSrc = 'assets/videos/9X16.mp4';
+            const desktopSrc = 'assets/videos/hero-video.mp4';
+            const newSrc = isMobile ? mobileSrc : desktopSrc;
+
+            // Extrai apenas o nome do arquivo da URL completa para uma comparação segura
+            const currentSrcPath = heroVideo.currentSrc ? heroVideo.currentSrc.split('/').pop() : null;
+            const newSrcPath = newSrc.split('/').pop();
+
+            // Altera a fonte apenas se for diferente da atual para evitar recarregamentos desnecessários
+            if (currentSrcPath !== newSrcPath) {
+                heroVideo.src = newSrc;
+                heroVideo.load();
+                // O 'play' é importante após o 'load' para garantir que o vídeo inicie
+                heroVideo.play().catch(error => console.log("Autoplay do vídeo foi bloqueado pelo navegador:", error));
+            }
+        }
+    }
+
+    // Define o vídeo na carga inicial
+    setHeroVideoSource();
+
+    // Atualiza o vídeo ao redimensionar a janela (com um pequeno atraso para performance)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setHeroVideoSource, 250);
+    });
+});
+
+// --- LÓGICA DO FORMULÁRIO DE CONTATO ---
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const status = document.getElementById('form-status');
+        const data = new FormData(event.target);
+
+        status.innerText = 'Enviando...';
+        status.className = 'mt-4 text-center font-semibold text-gray-600';
+
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                status.innerText = "Obrigado pelo contato! Sua mensagem foi enviada com sucesso.";
+                status.className = 'mt-4 text-center font-semibold text-green-600';
+                form.reset();
+            } else {
+                response.json().then(data => {
+                    status.innerText = data.errors ? data.errors.map(error => error.message).join(', ') : "Oops! Houve um problema ao enviar seu formulário.";
+                    status.className = 'mt-4 text-center font-semibold text-red-600';
+                });
+            }
+        }).catch(error => {
+            status.innerText = "Oops! Houve um problema de conexão. Tente novamente mais tarde.";
+            status.className = 'mt-4 text-center font-semibold text-red-600';
+        });
+    }
+
+    if (form) {
+        form.addEventListener("submit", handleSubmit);
     }
 });
