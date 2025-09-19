@@ -764,6 +764,13 @@ function createDonutChart(elementId, value, color, unit = '%') {
     const element = document.getElementById(elementId);
     if (!element) return;
 
+    // Para '%', o valor é uma proporção (0-1). Para 'min', o código original passava um valor semelhante a uma proporção (0,60 para 60).
+    // Isso é frágil. Tornamos isso mais robusto, lidando com o valor bruto para 'min'.
+    // Assumimos um máximo de 90 minutos para o arco, tornando-o significativo.
+    const arcProportion = unit === '%' ? value : value / 90.0;
+    // Garante que a proporção esteja entre 0 e 1 para evitar erros no D3.
+    const data = [Math.min(arcProportion, 1), 1 - Math.min(arcProportion, 1)];
+
     const isMobile = window.innerWidth < 768;
     const size = isMobile ? 144 : 192; // Tamanho menor para mobile (144px), padrão (192px)
     const width = size, height = size, margin = 5;
@@ -775,8 +782,6 @@ function createDonutChart(elementId, value, color, unit = '%') {
         .attr("height", height)
         .append("g")
         .attr("transform", `translate(${width / 2},${height / 2})`);
-
-    const data = [value, 1 - value];
 
     const colorScale = d3.scaleOrdinal()
         .domain([0, 1])
@@ -803,11 +808,14 @@ function createDonutChart(elementId, value, color, unit = '%') {
         .style("fill", "white");
 
     function animate(finalValue) {
+        // Para '%', o valor de exibição é finalValue * 100. Para 'min', é apenas o finalValue.
+        const displayValue = unit === '%' ? finalValue * 100 : finalValue;
+
         // Animação do número
         text.transition()
             .duration(1500)
             .tween("text", function() {
-                const i = d3.interpolate(0, finalValue * 100);
+                const i = d3.interpolate(0, displayValue);
                 const unitFontSize = isMobile ? "0.8rem" : "1rem";
                 const percentUnitFontSize = isMobile ? "1.2rem" : "1.5rem";
                 const format = unit === 'min' ? (d) => `${Math.round(d)}<tspan font-size="${unitFontSize}">min</tspan>` : (d) => `${Math.round(d)}<tspan font-size="${percentUnitFontSize}">%</tspan>`;
@@ -836,9 +844,9 @@ function createDonutChart(elementId, value, color, unit = '%') {
 
 // Inicialização dos gráficos
 document.addEventListener('DOMContentLoaded', function() {
-    createDonutChart('chart1', 0.95, '#3b82f6', '%'); // 95%
-    createDonutChart('chart2', 0.60, '#10b981', 'min'); // 60 min
-    createDonutChart('chart3', 0.85, '#ef4444', '%'); // 85%
+    createDonutChart('chart1', 0.95, '#3b82f6', '%');
+    createDonutChart('chart2', 60, '#10b981', 'min'); // 60 min
+    createDonutChart('chart3', 0.85, '#ef4444', '%');
 
     const statsSection = document.getElementById('stats');
     let hasAnimated = false;
@@ -851,7 +859,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const chart3 = document.getElementById('chart3');
                 
                 if (chart1 && chart1.animateChart) chart1.animateChart(0.95);
-                if (chart2 && chart2.animateChart) chart2.animateChart(0.60);
+                if (chart2 && chart2.animateChart) chart2.animateChart(60);
                 if (chart3 && chart3.animateChart) chart3.animateChart(0.85);
                 
                 hasAnimated = true;
