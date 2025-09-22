@@ -348,7 +348,7 @@ function showProductDetailPage(categoryId, subcategoryId, productId, push = true
 
     const pageContent = `
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div class="sticky top-24">
+            <div class="lg:sticky top-24">
                 <img src="${product.image}" class="w-full h-auto rounded-lg shadow-2xl">
             </div>
             <div>
@@ -460,7 +460,7 @@ function showServiceDetail(serviceId, push = true) {
                             </div>
                         </div>
                         <div>
-                            <div class="bg-gray-50 p-6 rounded-lg shadow-lg sticky top-24">
+                            <div class="bg-gray-50 p-6 rounded-lg shadow-lg lg:sticky top-24">
                                 <h3 class="text-2xl font-bold text-gray-800 mb-4">Galeria de Exemplos</h3>
                                 <div class="grid grid-cols-2 gap-4">
                                     ${galleryHtml}
