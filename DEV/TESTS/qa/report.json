@@ -1,0 +1,131 @@
+{
+  "mode": "smoke",
+  "url": "http://127.0.0.1:4173/",
+  "baseline": {
+    "required": false,
+    "tolerance": 0.01
+  },
+  "verdict": "PASS",
+  "viewports": [
+    {
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "DEV/TESTS/qa/capture-mobile-390.png",
+      "baseline": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "overflow": {
+        "documentOverflow": false,
+        "overflowing": []
+      },
+      "unnamed": [],
+      "contrastFindings": [],
+      "score": {
+        "accessibility": 20,
+        "contrast": 15,
+        "responsive": 15,
+        "consistency": 15,
+        "typography": 10,
+        "spacing": 10,
+        "hierarchy": 10,
+        "runtime": 5,
+        "total": 100
+      },
+      "hardFailures": [],
+      "verdict": "PASS"
+    },
+    {
+      "viewport": {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "DEV/TESTS/qa/capture-tablet-768.png",
+      "baseline": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "overflow": {
+        "documentOverflow": false,
+        "overflowing": []
+      },
+      "unnamed": [],
+      "contrastFindings": [],
+      "score": {
+        "accessibility": 20,
+        "contrast": 15,
+        "responsive": 15,
+        "consistency": 15,
+        "typography": 10,
+        "spacing": 10,
+        "hierarchy": 10,
+        "runtime": 5,
+        "total": 100
+      },
+      "hardFailures": [],
+      "verdict": "PASS"
+    },
+    {
+      "viewport": {
+        "name": "laptop",
+        "width": 1280,
+        "height": 800
+      },
+      "screenshot": "DEV/TESTS/qa/capture-laptop-1280.png",
+      "baseline": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "overflow": {
+        "documentOverflow": false,
+        "overflowing": []
+      },
+      "unnamed": [],
+      "contrastFindings": [],
+      "score": {
+        "accessibility": 20,
+        "contrast": 15,
+        "responsive": 15,
+        "consistency": 15,
+        "typography": 10,
+        "spacing": 10,
+        "hierarchy": 10,
+        "runtime": 5,
+        "total": 100
+      },
+      "hardFailures": [],
+      "verdict": "PASS"
+    },
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "DEV/TESTS/qa/capture-desktop-1440.png",
+      "baseline": null,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "overflow": {
+        "documentOverflow": false,
+        "overflowing": []
+      },
+      "unnamed": [],
+      "contrastFindings": [],
+      "score": {
+        "accessibility": 20,
+        "contrast": 15,
+        "responsive": 15,
+        "consistency": 15,
+        "typography": 10,
+        "spacing": 10,
+        "hierarchy": 10,
+        "runtime": 5,
+        "total": 100
+      },
+      "hardFailures": [],
+      "verdict": "PASS"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
-// Dados dos parceiros exibidos no carrossel
+// Empresas que já confiaram nos nossos serviços (não indica contrato atual).
 const partnersData = [
-  { name: 'Better Beef', logo: 'assets/images/partners/betterbeef.png' },
+  { name: 'JBS', logo: 'assets/images/partners/jbs.png', logoClass: 'partner-logo-jbs' },
+  { name: 'Friboi', logo: 'assets/images/partners/friboi.svg', logoClass: 'partner-logo-friboi' },
+  { name: 'FriGol', logo: 'assets/images/partners/frigol.png' },
   { name: 'Grupo Fuga', logo: 'assets/images/partners/fuga.png' },
   { name: 'FrigoSul', logo: 'assets/images/partners/frigosul.png' },
   { name: 'Marfrig', logo: 'assets/images/partners/marfrig.png' },
-  { name: 'MBP IsoBlock', logo: 'assets/images/partners/MBP.png' },
-  { name: 'Pantanal Frigorifico', logo: 'assets/images/partners/pantanal.png' },
-  { name: 'Frigorifico Rio Maria ', logo: 'assets/images/partners/riomaria.png' },
-  { name: 'Zanotti Refrigerações', logo: 'assets/images/partners/zanotti.png' }
+  { name: 'Pantanal Frigorífico', logo: 'assets/images/partners/pantanal.png' },
+  { name: 'Frigorífico Rio Maria', logo: 'assets/images/partners/riomaria.png' }
 ];

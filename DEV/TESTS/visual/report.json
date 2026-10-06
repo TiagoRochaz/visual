@@ -1,0 +1,129 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "name": "home-390",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "home-768",
+      "width": 768,
+      "scrollWidth": 768,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "home-1280",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "home-1440",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "servicos-390",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "servicos-1440",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "produtos-390",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "produtos-1440",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "portfolio-390",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "portfolio-1440",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "sobre-390",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "sobre-1440",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "produtos-lista-390",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "produtos-lista-1440",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "modal-mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "servico-detalhe-mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "produto-detalhe",
+      "width": 390,
+      "scrollWidth": 390,
+      "unnamed": [],
+      "broken": []
+    },
+    {
+      "name": "reduced-motion",
+      "manualPlayback": true
+    }
+  ],
+  "errors": []
+}

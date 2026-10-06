@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Produtos - Visual Isolamentos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <meta name="description" content="Isolantes térmicos, painéis, portas frigoríficas e acessórios. Explore o catálogo da Visual Isolamentos e fale com nossa equipe.">
+    <link rel="stylesheet" href="assets/tailwind.css">
+    <link rel="icon" href="Logo.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
     <!-- Cabeçalho e Navegação -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
+            <a href="index.html" class="flex items-center" aria-label="Visual Isolamentos — página inicial">
                 <!-- Logo SVG -->
                 <img src="Logo.svg" alt="Visual Isolamentos Logo" class="h-10 w-auto">
             </a>
@@ -54,7 +55,8 @@
     <main class="product-catalog-bg py-20 flex-grow">
         <div id="products-catalog-page" class="container mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Catálogo de Produtos</h2>
+                <p class="eyebrow">MATERIAIS PARA O SEU PROJETO</p>
+                <h1 class="text-3xl md:text-4xl font-bold text-white">Catálogo de Produtos</h1>
                 <p class="text-gray-400 mt-2">Escolha uma categoria para explorar nossos produtos.</p>
             </div>
             <div id="product-categories-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -80,10 +82,7 @@
         </svg>
     </a>
 
-    <script src="data-services.js" defer></script>
     <script src="data-products.js" defer></script>
-    <script src="data-portfolio.js" defer></script>
-    <script src="data-partners.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>

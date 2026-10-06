@@ -1,0 +1,12 @@
+{
+  "name": "visual-isolamentos",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node DEV/WORKFLOWS/build-css.cjs",
+    "check": "node --check script.js && node --check data-partners.js && node --check data-products.js && node --check data-services.js && node --check data-portfolio.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.19"
+  }
+}

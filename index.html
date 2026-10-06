@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visual Isolamentos - Soluções em Isolamento Térmico</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <meta name="description" content="Isolamento térmico industrial, montagem de câmaras frias e painéis isotérmicos. Conheça os projetos da Visual Isolamentos e solicite seu orçamento pelo WhatsApp.">
+    <meta name="theme-color" content="#123c73">
+    <link rel="canonical" href="https://visualizo.com.br/">
+    <link rel="stylesheet" href="assets/tailwind.css">
+    <link rel="icon" href="Logo.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -16,7 +19,7 @@
     <!-- Cabeçalho e Navegação -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
+            <a href="index.html" class="flex items-center" aria-label="Visual Isolamentos — página inicial">
                 <!-- Logo SVG -->
                 <img src="Logo.svg" alt="Visual Isolamentos Logo" class="h-10 w-auto">
             </a>
@@ -54,24 +57,40 @@
     <div id="main-page">
         <main>
             <!-- Seção Hero -->
-            <section id="inicio" class="hero-section text-white h-[70vh] flex items-center">
+            <section id="inicio" class="hero-section text-white flex items-center">
                 <div class="hero-overlay"></div>
-                <video autoplay loop muted playsinline id="hero-video">
+                <video autoplay loop muted playsinline preload="metadata" poster="assets/videos/poster-desktop.webp" aria-hidden="true" id="hero-video">
                     <!-- O vídeo será carregado dinamicamente via JavaScript para garantir a compatibilidade -->
                     Seu navegador não suporta o formato de vídeo.
                 </video>
-                <div class="hero-content container mx-auto px-6 text-center">
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Eficiência e Qualidade em Isolamento Térmico Industrial</h1>
-                    <p class="text-lg md:text-xl text-blue-200 mb-8">Soluções completas para câmaras frias, tubulações e projetos especiais.</p>
-                    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#contato" class="nav-link bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300 w-full sm:w-auto">Solicite um Orçamento</a>
-                        <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2 w-full sm:w-auto">
+                <div class="hero-content container mx-auto px-6">
+                    <p class="eyebrow hero-eyebrow">VISUAL ISOLAMENTOS · ATUAÇÃO NACIONAL</p>
+                    <h1 class="font-bold leading-tight mb-6">Precisão em cada detalhe.<br><span>Eficiência em toda a operação.</span></h1>
+                    <p class="hero-description mb-8">Isolamento térmico industrial, câmaras frias e painéis isotérmicos. Soluções executadas por quem conhece o seu projeto de perto.</p>
+                    <div class="hero-actions flex flex-col sm:flex-row items-start gap-4">
+                        <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="btn-whatsapp text-white font-semibold py-4 px-6 flex items-center justify-center gap-3 w-full sm:w-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.1-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
                             </svg>
-                            <span>Falar no WhatsApp</span>
+                            <span>Solicitar orçamento no WhatsApp</span>
                         </a>
+                        <a href="#portfolio" class="nav-link btn-outline py-4 px-6 font-semibold w-full sm:w-auto text-center">Conheça nossas obras <span aria-hidden="true">↗</span></a>
                     </div>
+                    <div class="hero-footnote"><span class="status-dot"></span> Experiência em campo. Compromisso com o seu projeto.</div>
+                </div>
+                <button id="video-toggle" class="video-toggle" type="button" aria-controls="hero-video" aria-label="Pausar vídeo de fundo">Pausar vídeo <span aria-hidden="true">Ⅱ</span></button>
+            </section>
+
+            <section id="parceiros" class="trust-section">
+                <div class="container mx-auto px-6">
+                    <div class="trust-heading">
+                        <p class="eyebrow">CONFIANÇA CONSTRUÍDA EM CAMPO</p>
+                        <h2>Empresas que já confiaram nos nossos serviços</h2>
+                    </div>
+                    <div id="partners-carousel" class="partners-carousel" aria-label="Carrossel de empresas atendidas">
+                        <div id="partners-track" class="partners-track"></div>
+                    </div>
+                    <div class="carousel-controls"><button id="partners-toggle" type="button" aria-controls="partners-track" aria-pressed="false">Pausar carrossel</button></div>
                 </div>
             </section>
 
@@ -79,8 +98,9 @@
             <section id="stats" class="py-20 stats-bg">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white">A Nossa Eficiência em Números</h2>
-                        <p class="text-gray-400 mt-2">Dados técnicos que comprovam o nosso compromisso com a performance.</p>
+                        <p class="eyebrow">DESEMPENHO E EXPERIÊNCIA</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Isolamento que faz a diferença</h2>
+                        <p class="text-gray-400 mt-2">Soluções técnicas para proteger sua estrutura e otimizar sua operação.</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
                         <!-- Gráfico 1 -->
@@ -106,7 +126,7 @@
                     <div class="mt-20 pt-10 border-t border-gray-700 flex flex-col md:flex-row justify-center items-center text-center gap-12">
                         <div class="text-white">
                             <p class="text-4xl font-bold text-blue-400">+30</p>
-                            <p class="text-lg text-gray-300">anos de experiência</p>
+                            <p class="text-lg text-gray-300">anos de experiência em campo</p>
                         </div>
                         <div class="text-white">
                             <p class="text-4xl font-bold text-blue-400">+250</p>
@@ -124,8 +144,9 @@
             <section id="servicos" class="py-20 bg-gray-50">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nossos Serviços e Produtos</h2>
-                        <p class="text-gray-600 mt-2">Oferecemos soluções personalizadas para a necessidade do seu projeto.</p>
+                        <p class="eyebrow">DA SOLUÇÃO À EXECUÇÃO</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">A solução certa para cada projeto</h2>
+                        <p class="text-gray-600 mt-3">Montagem, isolamento e fornecimento de materiais para ambientes industriais.</p>
                     </div>
                     <div id="services-preview" class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Preview dos serviços será inserido aqui pelo JS -->
@@ -133,27 +154,13 @@
                 </div>
             </section>
             
-            <!-- Seção de Parceiros -->
-            <section id="parceiros" class="py-20">
-                <div class="container mx-auto px-6">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nossos Parceiros</h2>
-                        <p class="text-gray-600 mt-2">Empresas que confiam na qualidade da Visual Isolamentos.</p>
-                    </div>
-                    <div id="partners-carousel" class="relative overflow-hidden">
-                        <div id="partners-track" class="flex">
-                            <!-- Parceiros serão inseridos aqui pelo JS -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- Seção de Portfólio (Preview) -->
             <section id="portfolio" class="py-20 bg-gray-50">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Nosso Portfólio</h2>
-                        <p class="text-gray-600 mt-2">Conheça alguns dos nossos projetos de sucesso.</p>
+                        <p class="eyebrow">NOSSO TRABALHO, NA PRÁTICA</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Projetos que mostram o que fazemos</h2>
+                        <p class="text-gray-600 mt-3">Conheça os desafios e as soluções executadas pela nossa equipe.</p>
                     </div>
                     <div id="portfolio-preview" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Os 3 projetos principais serão inseridos aqui pelo JS -->
@@ -168,8 +175,10 @@
             <section id="contato" class="py-20">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Entre em Contato</h2>
-                        <p class="text-gray-600 mt-2">Estamos prontos para atender seu projeto. Envie sua mensagem ou ligue para nós.</p>
+                        <p class="eyebrow">VAMOS CONVERSAR SOBRE O SEU PROJETO</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Seu próximo projeto começa aqui</h2>
+                        <p class="text-gray-600 mt-3">Fale com nossa equipe pelo WhatsApp. Se preferir, envie sua mensagem pelo formulário.</p>
+                        <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." class="btn-whatsapp contact-whatsapp" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp <span aria-hidden="true">↗</span></a>
                     </div>
                     <div class="max-w-4xl mx-auto flex flex-col md:flex-row bg-white p-8 rounded-lg shadow-xl border border-gray-100">
                         <div class="md:w-2/3 md:pr-8">
@@ -181,12 +190,12 @@
                                 <div class="mb-4"><label for="message" class="block text-gray-700 font-bold mb-2">Mensagem</label><textarea id="message" name="message" rows="5" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Descreva sua necessidade..." required></textarea></div>
                                 <button type="submit" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 w-full">Enviar Mensagem</button>
                             </form>
-                            <p id="form-status" class="mt-4 text-center font-semibold"></p>
+                            <p id="form-status" class="mt-4 text-center font-semibold" role="status" aria-live="polite"></p>
                         </div>
                         <div class="md:w-1/3 mt-8 md:mt-0 md:pl-8 border-t md:border-t-0 md:border-l border-gray-200 pt-8 md:pt-0">
                             <h3 class="text-xl font-bold mb-4">Nossas Informações</h3>
                             <p class="text-gray-600 mb-4"><strong>Endereço:</strong><br>Rua Um, 31 - Osmar Cabral, Cuiabá - MT</p>
-                            <p class="text-gray-600 mb-4"><strong>Email:</strong><br>visualisolamentos@gmail.com</p>
+                            <p class="text-gray-600 mb-4"><strong>Email:</strong><br><a href="mailto:visualisolamentos@gmail.com">visualisolamentos@gmail.com</a></p>
                             <p class="text-gray-600"><strong>Telefone:</strong><br>(15) 98816-3613</p>
                         </div>
                     </div>
@@ -217,10 +226,9 @@
         </svg>
     </a>
 
-    <script src="data-services.js"></script>
-    <script src="data-products.js"></script>
-    <script src="data-portfolio.js"></script>
-    <script src="data-partners.js"></script>
+    <script src="data-services.js" defer></script>
+    <script src="data-portfolio.js" defer></script>
+    <script src="data-partners.js" defer></script>
     <script src="script.js" defer></script>
 
 </body>

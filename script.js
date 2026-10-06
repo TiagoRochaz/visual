@@ -1,3 +1,27 @@
+// Mídia derivada: os arquivos originais continuam disponíveis no repositório.
+const WHATSAPP_URL = 'https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista.';
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+function webImage(source) {
+    return /\.(png|jpe?g)$/i.test(source) ? `${source}.webp` : source;
+}
+
+function refineContactActions(container) {
+    container.querySelectorAll('a[href^="https://wa.me/"]').forEach(link => {
+        if (!link.previousElementSibling?.matches('a[href^="https://wa.me/"]')) return;
+        link.href = 'index.html#contato';
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+        link.className = 'secondary-contact';
+        link.textContent = 'Prefiro enviar uma mensagem';
+    });
+}
+
+function showNotFound(container, message, destination, label) {
+    if (!container) return;
+    container.innerHTML = `<div class="text-center py-20"><h1 class="text-3xl font-bold mb-6">${message}</h1><a href="${destination}" class="text-blue-600 font-semibold">${label} &rarr;</a></div>`;
+    showPage(container);
+}
+
 // --- LÓGICA DE NAVEGAÇÃO SPA (Single Page Application) E ROTEAMENTO ---
 const pages = {
     servicesList: document.getElementById('services-list-page'),
@@ -47,12 +71,34 @@ function handleRouting() {
         } else if (categoryId && subcategoryId) {
             renderSubcategoryProducts(categoryId, subcategoryId);
             showPage(pages.productList);
+        } else {
+            showNotFound(pages.productList, 'Escolha uma categoria de produtos', 'produtos.html', 'Ver catálogo');
         }
     }
 }
 
 // Event listeners para navegação
 document.addEventListener('DOMContentLoaded', function() {
+    // Prioridade comercial aprovada: contato direto pelo WhatsApp.
+    document.querySelectorAll('header a[href$="#contato"]').forEach(link => {
+        link.href = WHATSAPP_URL;
+        link.textContent = 'Orçamento ↗';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.setAttribute('aria-label', 'Solicitar orçamento pelo WhatsApp');
+    });
+    document.querySelectorAll('header a[href*="instagram.com"]').forEach(link => {
+        link.setAttribute('aria-label', 'Visual Isolamentos no Instagram');
+    });
+    document.querySelectorAll('footer p').forEach(paragraph => {
+        if (paragraph.textContent.includes('© 2025')) {
+            paragraph.textContent = `© ${new Date().getFullYear()} Visual Isolamentos. Todos os direitos reservados.`;
+        }
+    });
+    const stats = document.getElementById('stats');
+    const contact = document.getElementById('contato');
+    if (stats && contact) contact.before(stats);
+
     // Botão para ver portfolio completo
     const viewFullPortfolioBtn = document.getElementById('view-full-portfolio');
     if (viewFullPortfolioBtn) {
@@ -70,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Smooth scroll to anchor
                     const targetElement = document.querySelector(href);
                     if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        targetElement.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth' });
                     }
             });
         }
@@ -89,86 +135,72 @@ const productCategoriesGrid = document.getElementById('product-categories-grid')
 
 function createServiceCard(serviceId, service) {
     return `
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 flex flex-col">
-            <img src="${service.image}" alt="${service.title}" class="w-full h-56 object-cover">
+        <article class="service-card bg-white overflow-hidden flex flex-col">
+            <img src="${webImage(service.image)}" alt="${service.title}" loading="lazy" decoding="async" width="640" height="420" class="w-full h-56 object-cover">
             <div class="p-6 flex flex-col flex-grow">
+                <p class="card-kicker">${serviceId === 'produtos' ? 'MATERIAIS E ACESSÓRIOS' : 'SOLUÇÕES INDUSTRIAIS'}</p>
                 <h3 class="text-xl font-bold mb-2">${service.title}</h3>
                 <p class="text-gray-600 flex-grow">${service.summary}</p>
-                <button class="view-service-detail mt-4 text-blue-600 font-semibold self-start" data-service="${serviceId}">Saiba Mais &rarr;</button>
+                <a href="${serviceId === 'produtos' ? 'produtos.html' : `servicos.html?service=${serviceId}`}" class="view-service-detail mt-6 text-blue-600 font-semibold self-start" data-service="${serviceId}">Conhecer solução &rarr;</a>
             </div>
-        </div>
+        </article>
     `;
 }
 
 function createProjectCard(projectId, project) {
     return `
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+        <article class="project-card bg-white overflow-hidden group">
             <div class="relative">
-                <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button class="open-modal-button text-white border-2 border-white py-2 px-6 rounded-full text-lg" data-project="${projectId}">Ver Detalhes</button>
+                <img src="${webImage(project.image)}" alt="${project.title}" loading="lazy" decoding="async" width="640" height="420" class="w-full h-64 object-cover">
+                <div class="project-image-action absolute inset-0 flex">
+                    <button class="open-modal-button" data-project="${projectId}" aria-label="Ver detalhes: ${project.title}">Ver projeto <span aria-hidden="true">↗</span></button>
                 </div>
             </div>
             <div class="p-6">
+                <p class="card-kicker">${project.details.Serviço}</p>
                 <h3 class="text-xl font-bold mb-2">${project.title}</h3>
                 <p class="text-gray-600">${project.summary}</p>
             </div>
-        </div>
+        </article>
     `;
 }
 
 // Renderização dos previews e grids
 document.addEventListener('DOMContentLoaded', function() {
-    // Verificar se os dados estão disponíveis
-    if (typeof servicesData === 'undefined' || typeof portfolioData === 'undefined') {
-        console.warn('Dados não carregados ainda. As funcionalidades podem não funcionar corretamente.');
-        return;
-    }
-
     // Preview dos serviços (incluindo produtos)
-    const allServicesForPreview = {...servicesData, ...{'produtos': {title: 'Nossos Produtos', image: 'assets/images/teste.png', summary: 'Fornecimento de materiais de alta performance, como isolantes térmicos e painéis isotérmicos para o seu projeto.'}}};
+    const allServicesForPreview = {...(typeof servicesData !== 'undefined' ? servicesData : {}), ...{'produtos': {title: 'Nossos Produtos', image: 'assets/images/teste.png', summary: 'Fornecimento de materiais de alta performance, como isolantes térmicos e painéis isotérmicos para o seu projeto.'}}};
     
     if (servicesPreviewContainer) {
-        Object.keys(allServicesForPreview).forEach(id => {
-            const service = allServicesForPreview[id];
-            // Mostra o serviço no preview apenas se a flag `showInPreview` não for explicitamente `false`.
-            // Isso permite que serviços sem a flag (padrão) apareçam.
-            if (service.showInPreview !== false) {
-                const cardHtml = createServiceCard(id, service);
-                servicesPreviewContainer.innerHTML += cardHtml;
-            }
-        });
+        servicesPreviewContainer.innerHTML = Object.entries(allServicesForPreview)
+            .filter(([, service]) => service.showInPreview !== false)
+            .map(([id, service]) => createServiceCard(id, service)).join('');
     }
 
     // Grid completo de serviços
-    if (servicesFullGridContainer) {
-        Object.keys(servicesData).forEach(id => {
-            const cardHtml = createServiceCard(id, servicesData[id]);
-            servicesFullGridContainer.innerHTML += cardHtml;
-        });
+    if (servicesFullGridContainer && typeof servicesData !== 'undefined') {
+        servicesFullGridContainer.innerHTML = Object.entries(servicesData)
+            .map(([id, service]) => createServiceCard(id, service)).join('');
     }
 
     // Preview do portfolio (primeiros 3 projetos)
-    if (portfolioPreviewContainer) {
-        Object.keys(portfolioData).slice(0, 3).forEach(id => {
-            portfolioPreviewContainer.innerHTML += createProjectCard(id, portfolioData[id]);
-        });
+    if (portfolioPreviewContainer && typeof portfolioData !== 'undefined') {
+        portfolioPreviewContainer.innerHTML = Object.entries(portfolioData).slice(0, 3)
+            .map(([id, project]) => createProjectCard(id, project)).join('');
     }
     
     // Grid completo do portfolio
-    if (portfolioFullGridContainer) {
-        Object.keys(portfolioData).forEach(id => {
-            portfolioFullGridContainer.innerHTML += createProjectCard(id, portfolioData[id]);
-        });
+    if (portfolioFullGridContainer && typeof portfolioData !== 'undefined') {
+        portfolioFullGridContainer.innerHTML = Object.entries(portfolioData)
+            .map(([id, project]) => createProjectCard(id, project)).join('');
     }
     
     // Grid de categorias de produtos
     if (productCategoriesGrid && typeof productsData !== 'undefined') {
-        Object.keys(productsData).forEach(categoryId => {
+        productCategoriesGrid.innerHTML = Object.keys(productsData).map(categoryId => {
             const category = productsData[categoryId];
-            productCategoriesGrid.innerHTML += `
+            return `
                 <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300">
-                    <img src="${category.categoryImage}" class="w-full h-56 object-cover opacity-60 group-hover:opacity-80 transition-opacity">
+                    <img src="${webImage(category.categoryImage)}" alt="${category.categoryName}" loading="lazy" decoding="async" width="640" height="420" class="w-full h-56 object-cover opacity-60 group-hover:opacity-80 transition-opacity">
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-white mb-2">${category.categoryName}</h3>
                         <p class="text-gray-400 mb-4">${category.categoryDescription}</p>
@@ -176,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-        });
+        }).join('');
     }
 });
 
@@ -190,7 +222,10 @@ function showProductListPage(categoryId, push = true) {
         history.pushState({ page: 'productList', categoryId }, '', url);
     }
 
-    if (typeof productsData === 'undefined' || !productsData[categoryId]) return;
+    if (typeof productsData === 'undefined' || !productsData[categoryId]) {
+        showNotFound(pages.productList, 'Categoria não encontrada', 'produtos.html', 'Ver catálogo');
+        return;
+    }
     
     const category = productsData[categoryId];
     let productsHtml = '';
@@ -202,7 +237,7 @@ function showProductListPage(categoryId, push = true) {
             productsHtml += `
                 <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
                     <div class="relative h-56">
-                        <img src="${subcategory.subcategoryImage}" class="w-full h-full object-cover">
+                        <img src="${webImage(subcategory.subcategoryImage)}" alt="${subcategory.subcategoryName}" loading="lazy" decoding="async" width="640" height="420" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                         <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">${subcategory.subcategoryName}</h3>
                     </div>
@@ -221,7 +256,7 @@ function showProductListPage(categoryId, push = true) {
             productsHtml += `
                 <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
                     <div class="relative aspect-square bg-gray-900">
-                        <img src="${product.image}" class="w-full h-full object-contain">
+                        <img src="${webImage(product.image)}" alt="${product.name}" loading="lazy" decoding="async" width="640" height="640" class="w-full h-full object-contain">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                         <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">${product.name}</h3>
                     </div>
@@ -243,7 +278,7 @@ function showProductListPage(categoryId, push = true) {
             ${productsHtml}
         </div>
         <div class="text-center mt-12">
-            <button class="back-button text-gray-400 font-semibold">&larr; Voltar ao Catálogo</button>
+            <a href="produtos.html" class="text-gray-400 font-semibold">&larr; Voltar ao Catálogo</a>
         </div>
     `;
 
@@ -259,7 +294,7 @@ function renderSubcategoryProducts(categoryId, subcategoryId) {
 
     const subcategory = productsData[categoryId]?.subcategories?.[subcategoryId];
     if (!subcategory) {
-        container.innerHTML = '<p class="text-white text-center text-xl">Subcategoria não encontrada.</p>';
+        showNotFound(container, 'Subcategoria não encontrada', 'produtos.html', 'Ver catálogo');
         return;
     }
 
@@ -270,7 +305,7 @@ function renderSubcategoryProducts(categoryId, subcategoryId) {
             productsHtml += `
                 <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
                     <div class="relative aspect-square bg-gray-900">
-                        <img src="${product.image}" class="w-full h-full object-contain">
+                        <img src="${webImage(product.image)}" alt="${product.name}" loading="lazy" decoding="async" width="640" height="640" class="w-full h-full object-contain">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                         <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">${product.name}</h3>
                     </div>
@@ -308,7 +343,10 @@ function showProductDetailPage(categoryId, subcategoryId, productId, push = true
         url.searchParams.set('product', productId);
         history.pushState({ page: 'productDetail', categoryId, subcategoryId, productId }, '', url);
     }
-    if (typeof productsData === 'undefined' || !productsData[categoryId]) return;
+    if (typeof productsData === 'undefined' || !productsData[categoryId]) {
+        showNotFound(pages.productDetail, 'Produto não encontrado', 'produtos.html', 'Ver catálogo');
+        return;
+    }
     
     const category = productsData[categoryId];
     let product;
@@ -321,7 +359,10 @@ function showProductDetailPage(categoryId, subcategoryId, productId, push = true
         product = category.products[productId];
     }
     
-    if (!product) return;
+    if (!product) {
+        showNotFound(pages.productDetail, 'Produto não encontrado', 'produtos.html', 'Ver catálogo');
+        return;
+    }
 
     let specsHtml = '';
     if (product.specs) {
@@ -349,7 +390,7 @@ function showProductDetailPage(categoryId, subcategoryId, productId, push = true
     const pageContent = `
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div class="lg:sticky top-24">
-                <img src="${product.image}" class="w-full h-auto rounded-lg shadow-2xl">
+                <img src="${webImage(product.image)}" alt="${product.name}" decoding="async" width="640" height="640" class="w-full h-auto rounded-lg shadow-2xl object-contain">
             </div>
             <div>
                 <h1 class="text-5xl font-bold text-white mb-4">${product.name}</h1>
@@ -359,7 +400,7 @@ function showProductDetailPage(categoryId, subcategoryId, productId, push = true
                     <ul>${specsHtml}</ul>
                 </div>
                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button class="contact-from-service-button w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition duration-300">Solicitar Orçamento</button>
+                    <a href="${WHATSAPP_URL}" target="_blank" rel="noopener noreferrer" class="w-full btn-whatsapp font-semibold py-3 px-6 text-center">Orçamento no WhatsApp</a>
                     <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2 text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.1-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
@@ -370,12 +411,13 @@ function showProductDetailPage(categoryId, subcategoryId, productId, push = true
             </div>
         </div>
             <div class="text-center mt-16">
-            <button class="back-button text-gray-400 font-semibold">&larr; Voltar para ${backButtonText}</button>
+            <a href="${subcategoryId ? `produtos-lista.html?category=${categoryId}&subcategory=${subcategoryId}` : `produtos.html?category=${categoryId}`}" class="text-gray-400 font-semibold">&larr; Voltar para ${backButtonText}</a>
         </div>
     `;
 
     if (pages.productDetail) {
         pages.productDetail.innerHTML = pageContent;
+        refineContactActions(pages.productDetail);
         showPage(pages.productDetail);
     }
 }
@@ -403,10 +445,6 @@ document.addEventListener('click', (e) => {
         const productId = e.target.dataset.product;
         showProductDetailPage(categoryId, subcategoryId, productId, true);
     }
-    if (e.target.classList.contains('back-button')) {
-        e.preventDefault();
-        history.back();
-    }
 });
 
 // --- LÓGICA PÁGINA DE DETALHE DE SERVIÇO ---
@@ -419,10 +457,14 @@ function showServiceDetail(serviceId, push = true) {
     if (typeof servicesData === 'undefined') return;
     
     const service = servicesData[serviceId];
+    if (!service) {
+        showNotFound(pages.serviceDetail, 'Serviço não encontrado', 'servicos.html', 'Ver serviços');
+        return;
+    }
     let galleryHtml = '';
     
     service.gallery.forEach(img => {
-        galleryHtml += `<img src="${img}" class="w-full h-48 object-cover rounded-lg shadow-md">`;
+        galleryHtml += `<img src="${webImage(img)}" alt="${service.title} — exemplo de execução" loading="lazy" decoding="async" width="400" height="300" class="w-full h-48 object-cover rounded-lg shadow-md">`;
     });
 
     let benefitsHtml = '';
@@ -443,7 +485,7 @@ function showServiceDetail(serviceId, push = true) {
         pages.serviceDetail.innerHTML = `
             <main class="bg-white">
                 <section class="relative h-72">
-                    <img src="${service.image}" class="w-full h-full object-cover">
+                    <img src="${webImage(service.image)}" alt="${service.title}" width="1280" height="720" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-blue-900 bg-opacity-60 flex items-center justify-center">
                         <h1 class="text-5xl font-bold text-white text-center px-4">${service.title}</h1>
                     </div>
@@ -471,7 +513,7 @@ function showServiceDetail(serviceId, push = true) {
                                     <p class="text-sm text-gray-600"><strong>Modelo de Precificação:</strong> ${service.pricingModel}</p>
                                 </div>
                                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    <button class="contact-from-service-button w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition duration-300">Solicitar Orçamento</button>
+                                    <a href="${WHATSAPP_URL}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp py-3 px-6 text-center font-semibold">Solicitar orçamento</a>
                                     <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2 text-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
                                             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.1-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
@@ -479,13 +521,14 @@ function showServiceDetail(serviceId, push = true) {
                                         <span>WhatsApp</span>
                                     </a>
                                 </div>
-                                <button class="back-button mt-3 w-full bg-gray-600 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-700 transition duration-300">Voltar aos Serviços</button>
+                                <a href="servicos.html" class="mt-3 block text-center w-full text-blue-600 font-semibold py-3 px-6">Voltar aos Serviços</a>
                             </div>
                         </div>
                     </div>
                 </section>
             </main>
         `;
+        refineContactActions(pages.serviceDetail);
         showPage(pages.serviceDetail);
     }
 }
@@ -514,11 +557,14 @@ document.addEventListener('click', (e) => {
 // --- LÓGICA DO MODAL DE PORTFÓLIO ---
 const modal = document.getElementById('portfolio-modal');
 const modalContent = document.getElementById('modal-content');
+let modalTrigger = null;
 
 function openModal(projectId) {
     if (typeof portfolioData === 'undefined' || !modal || !modalContent) return;
     
     const project = portfolioData[projectId];
+    if (!project) return;
+    modalTrigger = document.activeElement;
 
     // Main slides HTML
     let galleryHtml = '';
@@ -526,7 +572,7 @@ function openModal(projectId) {
         // Aumentei a altura para h-[65vh] (65% da altura da tela) para que imagens verticais (de celular) fiquem maiores e mais visíveis.
         // Revertido para o modelo anterior, com altura de 65vh e fundo mais escuro para um visual mais padronizado.
         // Alterado para 'object-cover' para que a imagem preencha o quadro, removendo as bordas (letterboxing). O fundo foi removido por não ser mais visível.
-        galleryHtml += `<div class="carousel-slide flex-shrink-0 w-full rounded-lg"><img src="${img}" class="w-full h-[65vh] object-cover" alt="${project.title} - Imagem ${index + 1}"></div>`;
+        galleryHtml += `<div class="carousel-slide flex-shrink-0 w-full rounded-lg"><img ${index === 0 ? 'src' : 'data-src'}="${webImage(img)}" decoding="async" width="960" height="720" class="w-full object-contain" alt="${project.title} - Imagem ${index + 1}"></div>`;
     });
 
     // Thumbnails HTML
@@ -535,8 +581,8 @@ function openModal(projectId) {
         project.gallery.forEach((img, index) => {
             // Increased height for thumbnails
             thumbnailsHtml += `
-                <button class="thumbnail-button rounded-md overflow-hidden border-2 border-transparent focus:outline-none transition-all duration-300" data-index="${index}">
-                    <img src="${img}" class="w-full h-20 object-cover" alt="Thumbnail ${index + 1}">
+                <button class="thumbnail-button rounded-md overflow-hidden border-2 border-transparent transition-all duration-300" data-index="${index}" aria-label="Ver imagem ${index + 1} de ${project.title}">
+                    <img src="${webImage(img)}" loading="lazy" decoding="async" width="120" height="80" class="w-full h-20 object-cover" alt="">
                 </button>
             `;
         });
@@ -549,7 +595,7 @@ function openModal(projectId) {
     });
 
     modalContent.innerHTML = `
-        <button id="close-modal-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-3xl font-bold z-20">&times;</button>
+        <button id="close-modal-button" aria-label="Fechar projeto" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-3xl font-bold z-20">&times;</button>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-8 p-6 md:p-8">
             <div class="md:col-span-3">
                 <!-- Main Image Viewer: Simplified structure to fix image cutting -->
@@ -558,8 +604,8 @@ function openModal(projectId) {
                         ${galleryHtml}
                     </div>
                     ${project.gallery.length > 1 ? `
-                    <button id="prevBtn" class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition z-10">&#8249;</button>
-                    <button id="nextBtn" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition z-10">&#8250;</button>
+                    <button id="prevBtn" aria-label="Imagem anterior" class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition z-10">&#8249;</button>
+                    <button id="nextBtn" aria-label="Próxima imagem" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition z-10">&#8250;</button>
                     ` : ''}
                 </div>
                 <!-- Thumbnails: Added for image preview -->
@@ -570,7 +616,7 @@ function openModal(projectId) {
                 ` : ''}
             </div>
             <div class="md:col-span-2 flex flex-col">
-                <h2 class="text-3xl font-bold mb-2">${project.title}</h2>
+                <h2 id="project-modal-title" class="text-3xl font-bold mb-2">${project.title}</h2>
                 <div class="text-sm text-gray-500 mb-4"><span>${project.details.Local}</span> | <span>${project.details.Ano}</span></div>
                 <div class="text-gray-600 mb-4 flex-grow">
                     <h4 class="font-bold text-gray-800 mb-2">Resumo do Projeto</h4><p>${project.description}</p>
@@ -579,7 +625,7 @@ function openModal(projectId) {
                     <h4 class="font-bold text-gray-800 mb-2">Destaques do Projeto</h4><ul class="space-y-2">${featuresHtml}</ul>
                 </div>
                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <button class="contact-from-service-button w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition">Entrar em Contato</button>
+                    <a href="${WHATSAPP_URL}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp font-semibold py-3 px-6 text-center">Solicitar orçamento</a>
                     <a href="https://wa.me/551531912990?text=Ol%C3%A1!%20vim%20pelo%20Site%20e%20gostaria%20de%20falar%20com%20um%20especialista." target="_blank" rel="noopener noreferrer" class="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition duration-300 flex items-center justify-center space-x-2 text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.1-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
@@ -592,6 +638,12 @@ function openModal(projectId) {
     `;
     
     modal.classList.remove('opacity-0', 'pointer-events-none');
+    refineContactActions(modalContent);
+    modal.inert = false;
+    modal.removeAttribute('aria-hidden');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'project-modal-title');
     document.body.style.overflow = 'hidden';
 
     // Configurar carrossel do modal
@@ -607,9 +659,11 @@ function openModal(projectId) {
         const updateThumbnails = (activeIndex) => {
             thumbnails.forEach((thumb, index) => {
                 if (index === activeIndex) {
+                    thumb.setAttribute('aria-current', 'true');
                     thumb.classList.add('border-blue-500');
                     thumb.classList.remove('border-transparent');
                 } else {
+                    thumb.removeAttribute('aria-current');
                     thumb.classList.remove('border-blue-500');
                     thumb.classList.add('border-transparent');
                 }
@@ -617,9 +671,13 @@ function openModal(projectId) {
         };
 
         const moveToSlide = (targetIndex) => {
-            const slideWidth = slides[0].getBoundingClientRect().width;
-            track.style.transition = 'transform 0.4s ease-in-out';
-            track.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)';
+            const image = slides[targetIndex].querySelector('img');
+            if (image.dataset.src) {
+                image.src = image.dataset.src;
+                delete image.dataset.src;
+            }
+            track.style.transition = reducedMotion.matches ? 'none' : 'transform 0.4s ease-in-out';
+            track.style.transform = `translateX(-${targetIndex * 100}%)`;
             currentIndex = targetIndex;
             updateThumbnails(currentIndex);
         };
@@ -649,13 +707,17 @@ function openModal(projectId) {
     const closeButton = modalContent.querySelector('#close-modal-button');
     if (closeButton) {
         closeButton.addEventListener('click', closeModal);
+        closeButton.focus();
     }
 }
 
 function closeModal() {
     if (modal) {
         modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.setAttribute('aria-hidden', 'true');
+        modal.inert = true;
         document.body.style.overflow = 'auto';
+        modalTrigger?.focus();
     }
 }
 
@@ -667,8 +729,25 @@ document.addEventListener('click', (e) => {
 });
 
 if (modal) {
+    modal.inert = true;
+    modal.setAttribute('aria-hidden', 'true');
     modal.addEventListener('click', (e) => { 
         if (e.target === modal) closeModal(); 
+    });
+    document.addEventListener('keydown', event => {
+        if (modal.classList.contains('pointer-events-none')) return;
+        if (event.key === 'Escape') closeModal();
+        if (event.key === 'Tab') {
+            const controls = [...modal.querySelectorAll('a[href], button, input, textarea')]
+                .filter(element => !element.disabled && element.getClientRects().length);
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault(); last?.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault(); first?.focus();
+            }
+        }
     });
 }
 
@@ -678,14 +757,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.getElementById('mobile-menu');
     
     if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.setAttribute('aria-label', 'Abrir menu de navegação');
+        mobileMenuButton.setAttribute('aria-controls', 'mobile-menu');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        const closeMenu = () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            mobileMenuButton.setAttribute('aria-label', 'Abrir menu de navegação');
+        };
         mobileMenuButton.addEventListener('click', () => { 
-            mobileMenu.classList.toggle('hidden'); 
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', String(!isHidden));
+            mobileMenuButton.setAttribute('aria-label', isHidden ? 'Abrir menu de navegação' : 'Fechar menu de navegação');
         });
         
-        mobileMenu.querySelectorAll('.nav-link').forEach(link => { 
+        mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => { 
-                mobileMenu.classList.add('hidden'); 
+                closeMenu();
             }); 
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                closeMenu(); mobileMenuButton.focus();
+            }
         });
     }
 });
@@ -706,208 +800,96 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         backToTopButton.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
         });
     }
 });
 
-// --- LÓGICA DO CARROSSEL DE PARCEIROS ---
+// --- EMPRESAS ATENDIDAS: LOOP CONTÍNUO COM PAUSA E COR NO HOVER ---
 document.addEventListener('DOMContentLoaded', function() {
     const partnersTrack = document.getElementById('partners-track');
-
-    function updatePartnersCarousel() {
-        if (partnersTrack && typeof partnersData !== 'undefined') {
-            partnersTrack.innerHTML = ''; // Limpa para reconstruir em caso de redimensionamento
-            const isMobile = window.innerWidth < 768;
-            const itemsVisible = isMobile ? 1.5 : 6; // Exibe 1.5 logos no mobile para mais espaço e tamanho, 6 no desktop
-            const itemWidthPercent = 100 / itemsVisible;
-
-            // Duplica os parceiros para o efeito de loop
-            const allPartners = [...partnersData, ...partnersData];
-
-            // A largura total do track é o número total de parceiros * a largura de cada um
-            partnersTrack.style.width = `${allPartners.length * itemWidthPercent}%`;
-
-            allPartners.forEach(partner => {
-                const partnerDiv = document.createElement('div');
-                // A largura de cada item é 1/total_de_itens da largura do track (100% / 16 = 6.25%)
-                partnerDiv.className = 'flex-shrink-0 w-[6.25%] px-8 md:px-4 flex flex-col items-center justify-center';
-                
-                const img = document.createElement('img');
-                img.src = partner.logo;
-                img.alt = partner.name;
-                img.className = 'h-24 md:h-24 mx-auto grayscale hover:grayscale-0 transition duration-300';
-                
-                const p = document.createElement('p');
-                p.className = 'mt-2 text-center text-xs md:text-sm font-semibold text-gray-600';
-                p.textContent = partner.name;
-                
-                partnerDiv.appendChild(img);
-                partnerDiv.appendChild(p);
-                partnersTrack.appendChild(partnerDiv);
-            });
-        }
-    }
-
-    updatePartnersCarousel(); // Executa na carga inicial
-
-    // Atualiza o carrossel ao redimensionar a janela para garantir a responsividade
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(updatePartnersCarousel, 250);
+    const carousel = document.getElementById('partners-carousel');
+    const toggle = document.getElementById('partners-toggle');
+    if (!partnersTrack || !carousel || typeof partnersData === 'undefined') return;
+    const items = partnersData.map(partner => `
+        <div class="partner-item" role="listitem">
+            <img src="${webImage(partner.logo)}" class="${partner.logoClass || ''}" alt="${partner.name}" loading="lazy" decoding="async" width="160" height="80">
+            <p>${partner.name}</p>
+        </div>`).join('');
+    partnersTrack.innerHTML = `<div class="partners-group" role="list" aria-label="Empresas atendidas">${items}</div>
+        <div class="partners-group" aria-hidden="true">${items}</div>`;
+    const updateWidth = () => {
+        const visible = window.innerWidth < 768 ? 1.5 : 6;
+        carousel.style.setProperty('--partner-width', `${carousel.clientWidth / visible}px`);
+    };
+    updateWidth();
+    new ResizeObserver(updateWidth).observe(carousel);
+    toggle?.addEventListener('click', () => {
+        const paused = carousel.classList.toggle('is-paused');
+        toggle.setAttribute('aria-pressed', String(paused));
+        toggle.textContent = paused ? 'Retomar carrossel' : 'Pausar carrossel';
     });
 });
 
-// --- LÓGICA DOS GRÁFICOS ANIMADOS ---
+// Indicadores em SVG local: não exigem biblioteca ou JavaScript para animação.
 function createDonutChart(elementId, value, color, unit = '%') {
     const element = document.getElementById(elementId);
     if (!element) return;
-
-    // Para '%', o valor é uma proporção (0-1). Para 'min', o código original passava um valor semelhante a uma proporção (0,60 para 60).
-    // Isso é frágil. Tornamos isso mais robusto, lidando com o valor bruto para 'min'.
-    // Assumimos um máximo de 90 minutos para o arco, tornando-o significativo.
-    const arcProportion = unit === '%' ? value : value / 90.0;
-    // Garante que a proporção esteja entre 0 e 1 para evitar erros no D3.
-    const data = [Math.min(arcProportion, 1), 1 - Math.min(arcProportion, 1)];
-
-    const isMobile = window.innerWidth < 768;
-    const size = isMobile ? 144 : 192; // Tamanho menor para mobile (144px), padrão (192px)
-    const width = size, height = size, margin = 5;
-    const radius = Math.min(width, height) / 2 - margin;
-
-    const svg = d3.select("#" + elementId)
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", `translate(${width / 2},${height / 2})`);
-
-    const colorScale = d3.scaleOrdinal()
-        .domain([0, 1])
-        .range([color, '#374151']); // Cor do fundo do gráfico
-
-    const pie = d3.pie().sort(null);
-
-    const arc = d3.arc()
-        .innerRadius(radius * 0.7)
-        .outerRadius(radius);
-
-    const path = svg.selectAll('path')
-        .data(pie(data))
-        .enter()
-        .append('path')
-        .attr('fill', (d, i) => colorScale(i))
-        .attr('d', arc);
-
-    const text = svg.append("text")
-        .attr("text-anchor", "middle")
-        .attr("dy", ".35em")
-        .style("font-size", isMobile ? "2rem" : "2.5rem") // Fonte menor para mobile
-        .style("font-weight", "700")
-        .style("fill", "white");
-
-    function animate(finalValue) {
-        // Para '%', o valor de exibição é finalValue * 100. Para 'min', é apenas o finalValue.
-        const displayValue = unit === '%' ? finalValue * 100 : finalValue;
-
-        // Animação do número
-        text.transition()
-            .duration(1500)
-            .tween("text", function() {
-                const i = d3.interpolate(0, displayValue);
-                const unitFontSize = isMobile ? "0.8rem" : "1rem";
-                const percentUnitFontSize = isMobile ? "1.2rem" : "1.5rem";
-                const format = unit === 'min' ? (d) => `${Math.round(d)}<tspan font-size="${unitFontSize}">min</tspan>` : (d) => `${Math.round(d)}<tspan font-size="${percentUnitFontSize}">%</tspan>`;
-                return function(t) {
-                    // Usamos .html() para interpretar o <tspan>
-                    d3.select(this).html(format(i(t)));
-                };
-            });
-        
-        // Animação do arco
-        path.filter((d, i) => i === 0) // Seleciona apenas o primeiro arco (o colorido)
-            .transition()
-            .duration(1500)
-            .attrTween('d', function(d) {
-                const start = {startAngle: 0, endAngle: 0};
-                const i = d3.interpolate(start, d);
-                return function(t) {
-                    return arc(i(t));
-                }
-            });
-    }
-    
-    // Guarda a função de animação para ser chamada depois
-    element.animateChart = animate;
+    const proportion = Math.max(0, Math.min(unit === '%' ? value : value / 90, 1));
+    const display = unit === '%' ? Math.round(value * 100) : value;
+    element.innerHTML = `<div class="stat-ring" role="img" aria-label="${display} ${unit}">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="50" fill="none" stroke="#34516a" stroke-width="8"/>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="${color}" stroke-width="8" pathLength="100" stroke-dasharray="${proportion * 100} 100" stroke-linecap="round"/></svg>
+        <strong>${display}<span>${unit}</span></strong></div>`;
 }
 
 // Inicialização dos gráficos
 document.addEventListener('DOMContentLoaded', function() {
-    createDonutChart('chart1', 0.95, '#3b82f6', '%');
-    createDonutChart('chart2', 60, '#10b981', 'min'); // 60 min
-    createDonutChart('chart3', 0.85, '#ef4444', '%');
-
-    const statsSection = document.getElementById('stats');
-    let hasAnimated = false;
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !hasAnimated) {
-                const chart1 = document.getElementById('chart1');
-                const chart2 = document.getElementById('chart2');
-                const chart3 = document.getElementById('chart3');
-                
-                if (chart1 && chart1.animateChart) chart1.animateChart(0.95);
-                if (chart2 && chart2.animateChart) chart2.animateChart(60);
-                if (chart3 && chart3.animateChart) chart3.animateChart(0.85);
-                
-                hasAnimated = true;
-                observer.unobserve(statsSection); // Anima apenas uma vez
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    if(statsSection) {
-        observer.observe(statsSection);
-    }
+    createDonutChart('chart1', 0.95, '#83baff', '%');
+    createDonutChart('chart2', 60, '#78d8ae', 'min');
+    createDonutChart('chart3', 0.85, '#b6d4ee', '%');
 });
 
 // --- LÓGICA DO VÍDEO RESPONSIVO DA PÁGINA INICIAL ---
 document.addEventListener('DOMContentLoaded', function() {
     const heroVideo = document.getElementById('hero-video');
-
-    function setHeroVideoSource() {
-        // Esta função só deve rodar na página inicial onde o vídeo existe
-        if (heroVideo) {
-            const isMobile = window.innerWidth < 768;
-            const mobileSrc = 'assets/videos/9X16.mp4';
-            const desktopSrc = 'assets/videos/hero-video.mp4';
-            const newSrc = isMobile ? mobileSrc : desktopSrc;
-
-            // Extrai apenas o nome do arquivo da URL completa para uma comparação segura
-            const currentSrcPath = heroVideo.currentSrc ? heroVideo.currentSrc.split('/').pop() : null;
-            const newSrcPath = newSrc.split('/').pop();
-
-            // Altera a fonte apenas se for diferente da atual para evitar recarregamentos desnecessários
-            if (currentSrcPath !== newSrcPath) {
-                heroVideo.src = newSrc;
-                heroVideo.load();
-                // O 'play' é importante após o 'load' para garantir que o vídeo inicie
-                heroVideo.play().catch(error => console.log("Autoplay do vídeo foi bloqueado pelo navegador:", error));
-            }
+    const toggle = document.getElementById('video-toggle');
+    if (!heroVideo || !toggle) return;
+    const mobile = window.matchMedia('(max-width: 767px)');
+    let userPaused = reducedMotion.matches;
+    const updateButton = () => {
+        const paused = heroVideo.paused;
+        toggle.textContent = paused ? 'Reproduzir vídeo ▷' : 'Pausar vídeo Ⅱ';
+        toggle.setAttribute('aria-label', paused ? 'Reproduzir vídeo de fundo' : 'Pausar vídeo de fundo');
+    };
+    const setSource = () => {
+        heroVideo.poster = `assets/videos/poster-${mobile.matches ? 'mobile' : 'desktop'}.webp`;
+        heroVideo.autoplay = !userPaused;
+        heroVideo.src = `assets/videos/hero-${mobile.matches ? 'mobile' : 'desktop'}.mp4`;
+        heroVideo.load();
+        if (!userPaused) heroVideo.play().catch(updateButton);
+        updateButton();
+    };
+    toggle.addEventListener('click', () => {
+        if (heroVideo.paused) {
+            userPaused = false;
+            heroVideo.play().catch(updateButton);
+        } else {
+            userPaused = true;
+            heroVideo.pause();
         }
-    }
-
-    // Define o vídeo na carga inicial
-    setHeroVideoSource();
-
-    // Atualiza o vídeo ao redimensionar a janela (com um pequeno atraso para performance)
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(setHeroVideoSource, 250);
     });
+    heroVideo.addEventListener('play', updateButton);
+    heroVideo.addEventListener('pause', updateButton);
+    mobile.addEventListener('change', setSource);
+    reducedMotion.addEventListener('change', () => {
+        if (reducedMotion.matches) { userPaused = true; heroVideo.pause(); }
+    });
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) heroVideo.pause();
+        else if (!userPaused) heroVideo.play().catch(updateButton);
+    });
+    setSource();
 });
 
 // --- LÓGICA DO FORMULÁRIO DE CONTATO ---
@@ -916,33 +898,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        if (form.dataset.submitting === 'true') return;
         const status = document.getElementById('form-status');
         const data = new FormData(event.target);
+        const submit = form.querySelector('button[type="submit"]');
+        form.dataset.submitting = 'true';
+        submit.disabled = true;
+        submit.textContent = 'Enviando…';
 
         status.innerText = 'Enviando...';
         status.className = 'mt-4 text-center font-semibold text-gray-600';
 
-        fetch(event.target.action, {
+        try {
+            const response = await fetch(event.target.action, {
             method: form.method,
             body: data,
             headers: {
                 'Accept': 'application/json'
             }
-        }).then(response => {
+            });
             if (response.ok) {
                 status.innerText = "Obrigado pelo contato! Sua mensagem foi enviada com sucesso.";
                 status.className = 'mt-4 text-center font-semibold text-green-600';
                 form.reset();
             } else {
-                response.json().then(data => {
-                    status.innerText = data.errors ? data.errors.map(error => error.message).join(', ') : "Oops! Houve um problema ao enviar seu formulário.";
-                    status.className = 'mt-4 text-center font-semibold text-red-600';
-                });
+                const result = await response.json().catch(() => ({}));
+                status.innerText = Array.isArray(result.errors) ? result.errors.map(error => error.message).join(', ') : 'Não foi possível enviar. Tente novamente ou fale pelo WhatsApp.';
+                status.className = 'mt-4 text-center font-semibold text-red-600';
             }
-        }).catch(error => {
+        } catch {
             status.innerText = "Oops! Houve um problema de conexão. Tente novamente mais tarde.";
             status.className = 'mt-4 text-center font-semibold text-red-600';
-        });
+        } finally {
+            form.dataset.submitting = 'false';
+            submit.disabled = false;
+            submit.textContent = 'Enviar Mensagem';
+        }
     }
 
     if (form) {

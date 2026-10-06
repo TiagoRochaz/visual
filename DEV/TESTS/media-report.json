@@ -1,0 +1,1066 @@
+[
+  {
+    "source": "assets/edmundo.png",
+    "before": 771205,
+    "after": 33490,
+    "width": 585,
+    "height": 1024
+  },
+  {
+    "source": "assets/Visual.png",
+    "before": 11132,
+    "after": 3968,
+    "width": 500,
+    "height": 500
+  },
+  {
+    "source": "assets/Paola.png",
+    "before": 717114,
+    "after": 27180,
+    "width": 602,
+    "height": 808
+  },
+  {
+    "source": "assets/vinicius.png",
+    "before": 113459,
+    "after": 4540,
+    "width": 298,
+    "height": 254
+  },
+  {
+    "source": "assets/tiago2.jpg",
+    "before": 87618,
+    "after": 48326,
+    "width": 768,
+    "height": 698
+  },
+  {
+    "source": "assets/images/teste.jpeg",
+    "before": 1016880,
+    "after": 221498,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/perfilprod.jpg",
+    "before": 27236,
+    "after": 9406,
+    "width": 1024,
+    "height": 500
+  },
+  {
+    "source": "assets/images/estoqueiso.jpg",
+    "before": 67672,
+    "after": 42508,
+    "width": 820,
+    "height": 615
+  },
+  {
+    "source": "assets/images/sldemqn.jpg",
+    "before": 251462,
+    "after": 152072,
+    "width": 1280,
+    "height": 835
+  },
+  {
+    "source": "assets/images/montagemiso.png",
+    "before": 1296003,
+    "after": 57850,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/teste.png",
+    "before": 421308,
+    "after": 33624,
+    "width": 512,
+    "height": 512
+  },
+  {
+    "source": "assets/images/banneriso.png",
+    "before": 2420200,
+    "after": 43054,
+    "width": 1280,
+    "height": 640
+  },
+  {
+    "source": "assets/images/bannertub.png",
+    "before": 7104838,
+    "after": 145678,
+    "width": 1280,
+    "height": 640
+  },
+  {
+    "source": "assets/images/partners/fuga.png",
+    "before": 70845,
+    "after": 8694,
+    "width": 480,
+    "height": 160
+  },
+  {
+    "source": "assets/images/partners/riomaria.png",
+    "before": 75347,
+    "after": 16560,
+    "width": 480,
+    "height": 160
+  },
+  {
+    "source": "assets/images/partners/frigosul.png",
+    "before": 375243,
+    "after": 19970,
+    "width": 480,
+    "height": 160
+  },
+  {
+    "source": "assets/images/partners/zanotti.png",
+    "before": 37700,
+    "after": 7512,
+    "width": 480,
+    "height": 160
+  },
+  {
+    "source": "assets/images/partners/marfrig.png",
+    "before": 57848,
+    "after": 11292,
+    "width": 480,
+    "height": 160
+  },
+  {
+    "source": "assets/images/partners/pantanal.png",
+    "before": 164042,
+    "after": 15992,
+    "width": 480,
+    "height": 160
+  },
+  {
+    "source": "assets/images/partners/betterbeef.png",
+    "before": 202380,
+    "after": 11130,
+    "width": 480,
+    "height": 160
+  },
+  {
+    "source": "assets/images/partners/MBP.png",
+    "before": 81712,
+    "after": 14900,
+    "width": 480,
+    "height": 160
+  },
+  {
+    "source": "assets/images/partners/jbs.png",
+    "before": 4440,
+    "after": 2368,
+    "width": 130,
+    "height": 52
+  },
+  {
+    "source": "assets/images/partners/frigol.png",
+    "before": 11008,
+    "after": 14668,
+    "width": 480,
+    "height": 194
+  },
+  {
+    "source": "assets/images/produtos/portagiratoria.png",
+    "before": 28926,
+    "after": 23376,
+    "width": 700,
+    "height": 700
+  },
+  {
+    "source": "assets/images/produtos/perfil_le_40x240x3000mm.jpg",
+    "before": 26708,
+    "after": 7316,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/portaprod.png",
+    "before": 1101682,
+    "after": 28268,
+    "width": 1280,
+    "height": 800
+  },
+  {
+    "source": "assets/images/produtos/PortaIsoplana.png",
+    "before": 27194,
+    "after": 29550,
+    "width": 700,
+    "height": 700
+  },
+  {
+    "source": "assets/images/produtos/LadeVidro.png",
+    "before": 929590,
+    "after": 28974,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/Painel EasyFrigo PIR.jpg",
+    "before": 15789,
+    "after": 3594,
+    "width": 500,
+    "height": 403
+  },
+  {
+    "source": "assets/images/produtos/perfil_li_40x40x3000mm_1.jpg",
+    "before": 39587,
+    "after": 8240,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/perfil_u_150x3000mm.jpg",
+    "before": 31381,
+    "after": 9878,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/perfilT.png",
+    "before": 793063,
+    "after": 10388,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/elastomerica.png",
+    "before": 1127509,
+    "after": 53956,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/perfil_u_100x3000mm.jpg",
+    "before": 47063,
+    "after": 11092,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/aluminio.png",
+    "before": 838781,
+    "after": 14600,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/portacorrer.png",
+    "before": 35562,
+    "after": 31978,
+    "width": 700,
+    "height": 700
+  },
+  {
+    "source": "assets/images/produtos/perfil_u_50.jpg",
+    "before": 38333,
+    "after": 11960,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/perfil_u_200x3000mm.jpg",
+    "before": 44843,
+    "after": 10148,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/portarapida.png",
+    "before": 65088,
+    "after": 22596,
+    "width": 750,
+    "height": 750
+  },
+  {
+    "source": "assets/images/produtos/rebites.png",
+    "before": 729275,
+    "after": 19348,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/fibraceramica.png",
+    "before": 827314,
+    "after": 17768,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/jaquetatermica.png",
+    "before": 952166,
+    "after": 28602,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/parafusos.png",
+    "before": 1002424,
+    "after": 52922,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/broca.png",
+    "before": 846775,
+    "after": 16690,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/perfil_l_40x90.jpg",
+    "before": 32280,
+    "after": 10760,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/Painel EasyClean.jpg",
+    "before": 9208,
+    "after": 1146,
+    "width": 449,
+    "height": 404
+  },
+  {
+    "source": "assets/images/produtos/perfil_l_40x120.jpg",
+    "before": 30670,
+    "after": 10004,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/perfil_le_40x190x3000mm.jpg",
+    "before": 25774,
+    "after": 6836,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/PortaSeccional.png",
+    "before": 58074,
+    "after": 34158,
+    "width": 750,
+    "height": 750
+  },
+  {
+    "source": "assets/images/produtos/Painel EasyWall.jpg",
+    "before": 16209,
+    "after": 3130,
+    "width": 487,
+    "height": 401
+  },
+  {
+    "source": "assets/images/produtos/portagiratoriatransito.png",
+    "before": 25346,
+    "after": 31068,
+    "width": 700,
+    "height": 700
+  },
+  {
+    "source": "assets/images/produtos/pefril_l_40x100.jpg",
+    "before": 32358,
+    "after": 11028,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/PortaStepIn.png",
+    "before": 104125,
+    "after": 81782,
+    "width": 928,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/isopor.png",
+    "before": 1033001,
+    "after": 28864,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/LadeRocha.png",
+    "before": 1222593,
+    "after": 56312,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/PortaVaieVem.png",
+    "before": 60861,
+    "after": 53768,
+    "width": 700,
+    "height": 700
+  },
+  {
+    "source": "assets/images/produtos/perfil_le_40x140x3000mm.jpg",
+    "before": 38761,
+    "after": 7324,
+    "width": 1000,
+    "height": 1000
+  },
+  {
+    "source": "assets/images/produtos/revestimentosmetalicos.png",
+    "before": 826970,
+    "after": 10134,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/produtos/portaabrigo.png",
+    "before": 42415,
+    "after": 45826,
+    "width": 700,
+    "height": 700
+  },
+  {
+    "source": "assets/images/produtos/portapassagemtrilho.png",
+    "before": 50386,
+    "after": 50998,
+    "width": 700,
+    "height": 700
+  },
+  {
+    "source": "assets/images/produtos/portacorrercamarasfrias.png",
+    "before": 37163,
+    "after": 29612,
+    "width": 700,
+    "height": 700
+  },
+  {
+    "source": "assets/images/produtos/poliuretano.png",
+    "before": 821334,
+    "after": 18310,
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/tubamo.jpg",
+    "before": 29105,
+    "after": 24066,
+    "width": 400,
+    "height": 300
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/coberturafrigosul.png",
+    "before": 1422151,
+    "after": 88008,
+    "width": 1280,
+    "height": 731
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/varginha.jpg",
+    "before": 44087,
+    "after": 35458,
+    "width": 400,
+    "height": 533
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/pipehack.jpg",
+    "before": 103589,
+    "after": 131186,
+    "width": 1000,
+    "height": 750
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Amambai/tubula\u00e7ao amanbai.jpg",
+    "before": 272699,
+    "after": 189166,
+    "width": 1280,
+    "height": 960
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Amambai/tubula\u00e7ao amanbai 3.jpg",
+    "before": 210450,
+    "after": 127710,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Amambai/tubula\u00e7ao amanbai 2.jpg",
+    "before": 274382,
+    "after": 189078,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Amambai/coletor amanbai.jpg",
+    "before": 218744,
+    "after": 140204,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Better Beef/Carretilhas.jpg",
+    "before": 222046,
+    "after": 147220,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Better Beef/Better beef Galpao Osso 2.jpg",
+    "before": 119509,
+    "after": 100772,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Better Beef/Carretilhas3.jpg",
+    "before": 206951,
+    "after": 141858,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Better Beef/Carretilhas4.jpg",
+    "before": 153908,
+    "after": 94536,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Better Beef/Carretilhas2.jpg",
+    "before": 171831,
+    "after": 105404,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Better Beef/Better beef Galpao Osso.jpg",
+    "before": 94476,
+    "after": 78014,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Frigosul/Imagem do WhatsApp de 2025-07-04 \u00e0(s) 16.08.48_dfa9b678.jpg",
+    "before": 232509,
+    "after": 210900,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Frigosul/Imagem do WhatsApp de 2025-07-04 \u00e0(s) 16.08.53_d67b7099.jpg",
+    "before": 120055,
+    "after": 97996,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Frigosul/Imagem do WhatsApp de 2025-07-04 \u00e0(s) 16.08.46_6820b39e.jpg",
+    "before": 180070,
+    "after": 134888,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Frigosul/Imagem do WhatsApp de 2025-07-04 \u00e0(s) 16.08.50_1ae4a173.jpg",
+    "before": 187216,
+    "after": 157666,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Doca Marfrig (6).jpg",
+    "before": 59665,
+    "after": 51466,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (11).jpg",
+    "before": 94431,
+    "after": 41034,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (2).jpg",
+    "before": 140028,
+    "after": 78790,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (9).jpg",
+    "before": 116734,
+    "after": 61364,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (13).jpg",
+    "before": 156558,
+    "after": 81508,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (6).jpg",
+    "before": 147039,
+    "after": 79866,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Doca Marfrig (2).jpg",
+    "before": 74470,
+    "after": 68386,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (10).jpg",
+    "before": 129638,
+    "after": 72786,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Doca Marfrig (3).jpg",
+    "before": 73072,
+    "after": 68446,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (1).jpg",
+    "before": 97240,
+    "after": 42132,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (8).jpg",
+    "before": 118690,
+    "after": 67266,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Doca Marfrig (4).jpg",
+    "before": 73216,
+    "after": 67524,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Doca Marfrig (5).jpg",
+    "before": 99603,
+    "after": 108524,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (4).jpg",
+    "before": 127283,
+    "after": 58736,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Marfrig Remo\u00e7ao parede (4).jpg",
+    "before": 160998,
+    "after": 92592,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Marfrig Remo\u00e7ao parede (7).jpg",
+    "before": 156446,
+    "after": 91346,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Doca Marfrig (1).jpg",
+    "before": 90178,
+    "after": 94702,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (12).jpg",
+    "before": 107395,
+    "after": 47162,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Marfrig Remo\u00e7ao parede (3).jpg",
+    "before": 283542,
+    "after": 208152,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Marfrig Remo\u00e7ao parede (1).jpg",
+    "before": 149380,
+    "after": 86298,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Marfrig Remo\u00e7ao parede (2).jpg",
+    "before": 228947,
+    "after": 152276,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (3).jpg",
+    "before": 143850,
+    "after": 77754,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Marfrig Remo\u00e7ao parede (6).jpg",
+    "before": 229621,
+    "after": 170092,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Paletiza\u00e7\u00e3o Marfrig (5).jpg",
+    "before": 120175,
+    "after": 56466,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Marfrig/Marfrig Remo\u00e7ao parede (5).jpg",
+    "before": 134807,
+    "after": 75178,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Ante Camara (3).jpg",
+    "before": 59572,
+    "after": 21614,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Porta Vai-Vem (3).jpg",
+    "before": 116595,
+    "after": 60526,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Desossa (1).jpg",
+    "before": 135887,
+    "after": 74810,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Embalagem (3).jpg",
+    "before": 90598,
+    "after": 41294,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Portas Frigorificas (1).jpg",
+    "before": 120491,
+    "after": 61554,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Embalagem (2).jpg",
+    "before": 76779,
+    "after": 34524,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Portas Frigorificas (2).jpg",
+    "before": 217987,
+    "after": 47368,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Elevador (2).jpg",
+    "before": 494150,
+    "after": 114708,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Desossa (2).jpg",
+    "before": 112710,
+    "after": 59762,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Estocagem (2).jpg",
+    "before": 34565,
+    "after": 12668,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Porta Vai-Vem (2).jpg",
+    "before": 105252,
+    "after": 51108,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Porta Vai-Vem (1).jpg",
+    "before": 115833,
+    "after": 59400,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Oculos.jpg",
+    "before": 82428,
+    "after": 37462,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Embalagem (1).jpg",
+    "before": 72137,
+    "after": 29972,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Elevador (1).jpg",
+    "before": 494150,
+    "after": 114708,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Ante Camara (2).jpg",
+    "before": 81757,
+    "after": 35878,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Estocagem (1).jpg",
+    "before": 61056,
+    "after": 27976,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Ante Camara (1).jpg",
+    "before": 84521,
+    "after": 38972,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Cortes Especiais (1).jpg",
+    "before": 81488,
+    "after": 38284,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/rAL50qx.jpeg",
+    "before": 260147,
+    "after": 75050,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Cortes Especiais (2).jpg",
+    "before": 122570,
+    "after": 66226,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/Rio Maria/Embalagem (4).jpg",
+    "before": 92027,
+    "after": 49032,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Digestor SEBO (3).jpg",
+    "before": 203186,
+    "after": 133268,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/tubula\u00e7ao digestor frente 2.jpg",
+    "before": 194862,
+    "after": 112630,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/tubula\u00e7ao digestor frente.jpg",
+    "before": 242091,
+    "after": 149158,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/tubula\u00e7ao digestor.jpg",
+    "before": 279986,
+    "after": 184044,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Digestor SEBO (4).jpg",
+    "before": 184073,
+    "after": 115304,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/tubula\u00e7ao digestor 2.jpg",
+    "before": 282587,
+    "after": 186174,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Digestor SEBO (5).jpg",
+    "before": 184499,
+    "after": 119362,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Caldeira SEBO (1).jpg",
+    "before": 301978,
+    "after": 208726,
+    "width": 1280,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/IMG-20241112-WA0018.jpg",
+    "before": 163582,
+    "after": 103176,
+    "width": 1280,
+    "height": 590
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/IMG-20241112-WA0031.jpg",
+    "before": 199345,
+    "after": 130168,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Caldeira SEBO (3).jpg",
+    "before": 321215,
+    "after": 245496,
+    "width": 1280,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Imagem do WhatsApp de 2025-04-22 \u00e0(s) 15.34.12_e8fd7190.jpg",
+    "before": 177913,
+    "after": 154820,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Prensa SEBO (1).jpg",
+    "before": 102635,
+    "after": 73792,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Coletor.jpg",
+    "before": 250819,
+    "after": 165718,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/IMG-20241112-WA0032.jpg",
+    "before": 189166,
+    "after": 118384,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Prensa SEBO (2).jpg",
+    "before": 152379,
+    "after": 125480,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Digestor SEBO (1).jpg",
+    "before": 208759,
+    "after": 140822,
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/tubula\u00e7ao digestor 3.jpg",
+    "before": 264912,
+    "after": 178266,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Digestor SEBO (2).jpg",
+    "before": 218094,
+    "after": 153602,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Tubula\u00e7\u00e3o coletor.jpg",
+    "before": 156320,
+    "after": 95716,
+    "width": 590,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Prensa SEBO (3).jpg",
+    "before": 138450,
+    "after": 107926,
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Caldeira SEBO (2).jpg",
+    "before": 336426,
+    "after": 219820,
+    "width": 1280,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Digestor.jpg",
+    "before": 263369,
+    "after": 198902,
+    "width": 720,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/Caldeira SEBO (4).jpg",
+    "before": 258837,
+    "after": 152434,
+    "width": 1280,
+    "height": 1280
+  },
+  {
+    "source": "assets/images/Servi\u00e7os/SEBO/coletor 2.jpg",
+    "before": 233125,
+    "after": 151820,
+    "width": 960,
+    "height": 1280
+  }
+]

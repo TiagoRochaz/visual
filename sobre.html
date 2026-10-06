@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós - Visual Isolamentos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <meta name="description" content="Conheça a equipe e a história da Visual Isolamentos, especializada em soluções de isolamento térmico industrial.">
+    <link rel="stylesheet" href="assets/tailwind.css">
+    <link rel="icon" href="Logo.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
     <!-- Cabeçalho e Navegação -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
+            <a href="index.html" class="flex items-center" aria-label="Visual Isolamentos — página inicial">
                 <!-- Logo SVG -->
                 <img src="Logo.svg" alt="Visual Isolamentos Logo" class="h-10 w-auto">
             </a>
@@ -53,7 +54,7 @@
     <!-- Conteúdo da Página "Sobre Nós" -->
     <main>
         <section class="relative h-72">
-            <img src="assets/images/teste.jpeg" class="w-full h-full object-cover">
+            <img src="assets/images/teste.jpeg.webp" alt="Instalação industrial" width="1280" height="720" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-blue-900 bg-opacity-60 flex items-center justify-center">
                 <h1 class="text-5xl font-bold text-white text-center">Sobre a Visual Isolamentos</h1>
             </div>
@@ -86,28 +87,28 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Funcionário 1 -->
                     <div class="text-center bg-white p-6 rounded-lg shadow-lg">
-                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="assets/edmundo.png" alt="Foto de Tiago Rocha">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="assets/edmundo.png.webp" alt="Foto de Edmundo Rocha" loading="lazy" decoding="async" width="128" height="128">
                         <h4 class="text-xl font-bold">Edmundo Rocha</h4>
                         <p class="text-blue-600 font-semibold">Fundador e Responsável Técnico</p>
                         <p class="text-gray-500 mt-2 text-sm">30 Anos de experiencia em campo, Edmundo atende todo e qualquer tipo de necessidade industrial para que sua planta funcione dentro dos padrões.</p>
                     </div>
                     <!-- Funcionário 2 -->
                     <div class="text-center bg-white p-6 rounded-lg shadow-lg">
-                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="assets/tiago2.jpg" alt="Foto de Tiago Rocha">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="assets/tiago2.jpg.webp" alt="Foto de Tiago Rocha" loading="lazy" decoding="async" width="128" height="128">
                         <h4 class="text-xl font-bold">Tiago Rocha</h4>
                         <p class="text-blue-600 font-semibold">Diretor e Responsável Técnico</p>
                         <p class="text-gray-500 mt-2 text-sm">Com experiência em campo, Tiago lidera nossos projetos com conhecimento técnico e uma paixão por entregar resultados impecáveis.</p>
                     </div>
                     <!-- Funcionário 3 -->
                     <div class="text-center bg-white p-6 rounded-lg shadow-lg">
-                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="assets/Paola.png" alt="Foto de Ana Clara">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="assets/Paola.png.webp" alt="Foto de Paola Borsatto" loading="lazy" decoding="async" width="128" height="128">
                         <h4 class="text-xl font-bold">Paola Borsatto</h4>
                         <p class="text-blue-600 font-semibold">Gerente Administrativa</p>
-                        <p class="text-gray-500 mt-2 text-sm">Ana é o coração da nossa organização, garantindo que a documentação, logística e o atendimento ao cliente funcionem com perfeição.</p>
+                        <p class="text-gray-500 mt-2 text-sm">Paola é o coração da nossa organização, garantindo que a documentação, logística e o atendimento ao cliente funcionem com perfeição.</p>
                     </div>
                     <!-- Funcionário 4 -->
                     <div class="text-center bg-white p-6 rounded-lg shadow-lg">
-                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="assets/vinicius.png" alt="Foto de Ana Clara">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" src="assets/vinicius.png.webp" alt="Foto de Vinicius Camolese" loading="lazy" decoding="async" width="128" height="128">
                         <h4 class="text-xl font-bold">Vinicius Camolese</h4>
                         <p class="text-blue-600 font-semibold">Gerente Marketing</p>
                         <p class="text-gray-500 mt-2 text-sm">Lidera a equipe de marketing com o objetivo de criar campanhas impactantes e alcançar resultados significativos para a empresa.</p>
@@ -132,10 +133,6 @@
         </svg>
     </a>
 
-    <script src="data-services.js" defer></script>
-    <script src="data-products.js" defer></script>
-    <script src="data-portfolio.js" defer></script>
-    <script src="data-partners.js" defer></script>
     <script src="script.js" defer></script>
 
 </body>
