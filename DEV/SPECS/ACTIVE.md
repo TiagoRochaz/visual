@@ -49,6 +49,6 @@
 
 ## Status
 
-- State: implementado e validado; repositório privado criado, primeiro envio em andamento.
+- State: implementado, validado e enviado para o repositório privado v2; commit do site 79f6481 confirmado no GitHub. Deploy no domínio pendente.
 - Owner: orquestrador / maestro.
 - Last updated: 2026-10-06.

@@ -12,12 +12,12 @@ This file should stay small. Refresh it after substantive work or run `orquestra
 
 ## Latest Work
 
-- Entry: proporção de JBS/Friboi equilibrada e hover corrigido na repetição do carrossel.
+- Entry: site enviado para o novo repositório privado v2.
 - Spec: `SPECS/ACTIVE.md`.
 - Changed: seis HTML, CSS/JS, empresas, mídia derivada, CSS estático e scripts de preparação/validação. Ver `DESIGN_PROFILE.md`, `ADR/001-static-delivery.md` e `LOGO_SOURCES.md`.
-- Verified: build/sintaxe passam; verificação focada em 390/1440 confirmou JBS e Friboi cinza/cor nos dois grupos, tamanho 112px e sem overflow. Capturas logo-*-group*-*.png em TESTS/visual mostram as cores reais. Browser smoke anterior do carrossel permanece registrado.
+- Verified: build/sintaxe passam; diff/histórico e arquivos preparados revisados; busca de padrões de credenciais sem correspondências; commit 79f6481 enviado para v2/main e SHA local/remoto confirmado. Visibilidade PRIVATE e branch main conferidas via GitHub CLI/API. Evidências visuais dos logos/carrossel em TESTS/visual.
 - Risks: npm em Drive gerou instalação inválida, usar TAILWIND_CLI externa ou checkout físico. Domínio indisponível nesta sessão; sem Lighthouse de produção. Contato e alguns indicadores/localidades antigos aguardam confirmação editorial.
-- Next context: novo repositório privado criado: https://github.com/TiagoRochaz/visual-isolamentos-v2. Maestro autorizou commit/push; envio em preparação. Após envio, confirmar WhatsApp e decidir hospedagem/deploy.
+- Next context: novo repositório privado pronto: https://github.com/TiagoRochaz/visual-isolamentos-v2. Site no commit 79f6481, histórico preservado e remote v2 configurado. Próximo passo: confirmar WhatsApp e decidir hospedagem/deploy para visualizo.com.br.
 
 ## Recent Entries
 

@@ -37,3 +37,15 @@
 - UI-002, mobile, galeria: fotografias verticais preservadas com contain, fechar com área de 44px e foco/Escape testados.
 - UI-003, mobile, contato dos detalhes: CTA WhatsApp primário e formulário secundário para evitar dois botões com a mesma ação.
 - Screenshots de home, catálogo, sobre, portfólio e modal abertos e inspecionados; cores/ritmo coerentes e fotos carregadas. Smoke não é auditoria WCAG completa.
+
+## Envio para o GitHub — 2026-10-06
+
+- Maestro autorizou repositório visual-isolamentos-v2 privado na conta TiagoRochaz, incluindo commit e push.
+- Build com TAILWIND_CLI externa, npm run check, diff check e DEV gates strict passaram antes do commit.
+- Diff, status e últimos dez commits revisados; apenas site, assets derivados, configuração CSS e DEV preparados.
+- Busca Git dos padrões de credenciais nos arquivos preparados: nenhuma correspondência. Credencial do GitHub permanece no keyring, fora do repo.
+- `git push v2 main`: concluído.
+- GitHub CLI/API confirmou visibility PRIVATE e defaultBranchRef main.
+- SHA do commit do site local/remoto igual: `79f6481ed542cad90baf191b5e0eeec5a0abe161`.
+- Working tree limpo após primeiro envio, antes deste registro documental.
+- Deploy no domínio não integra o envio do repositório.

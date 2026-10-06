@@ -17,7 +17,7 @@
 ## Constraints And Risks
 
 - Origem: `https://github.com/TiagoRochaz/visual.git`; upstream: `https://github.com/Kamolese/visual.git`.
-- Novo destino autorizado: `https://github.com/TiagoRochaz/visual-isolamentos-v2.git`, privado, remote v2 e branch main. Repositório criado; envio em preparação.
+- Novo destino autorizado: `https://github.com/TiagoRochaz/visual-isolamentos-v2.git`, privado, remote v2 e branch main. Site enviado no commit 79f6481 e hash confirmado na API do GitHub.
 - Maestro autorizou novo repositório privado e envio da versão atual após os ajustes de logos/carrossel.
 - Design Profile B aprovado; site atualizado e validado localmente.
 - Domínio informado: visualizo.com.br. Fetch nesta sessão falhou; provedor de hospedagem não confirmado.
@@ -29,4 +29,4 @@
 
 ## Next Context
 
-- Confirmar envio no destino v2 e número WhatsApp; definir hospedagem para eventual deploy no domínio.
+- Repositório v2 pronto; confirmar número WhatsApp e definir hospedagem para eventual deploy no domínio.

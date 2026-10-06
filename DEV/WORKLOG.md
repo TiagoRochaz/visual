@@ -1,5 +1,11 @@
 # Worklog
 
+## 2026-10-06 — Site enviado para GitHub privado
+
+- Changed: commit 79f6481 com a versão modernizada enviado para v2/main em TiagoRochaz/visual-isolamentos-v2 privado.
+- Verified: build/sintaxe, diff/gates, padrões de credenciais e API GitHub; SHA local/remoto correspondente, visibilidade PRIVATE e branch main confirmadas.
+- Next context: repositório pronto; definir hospedagem para visualizo.com.br e confirmar número WhatsApp.
+
 ## 2026-10-06 — Preparação do repositório privado v2
 
 - Changed: destino TiagoRochaz/visual-isolamentos-v2 criado privado, autorizado pelo maestro.
