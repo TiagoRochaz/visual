@@ -83,6 +83,20 @@ a.bg-blue-600, button.bg-blue-600, button.bg-gray-600, a.bg-green-500 { border-r
 #contato { background: #f1f5f9; }
 #contato .max-w-4xl { max-width: 1000px; border-radius: 12px; box-shadow: 0 12px 32px #122b4508; }
 #contato label { font-size: .8rem; font-weight: 600; }
+/* Filtros (portfolio e produtos) */
+.filtros { margin: 0 0 2rem; }
+.filtros-barra { display: flex; flex-wrap: wrap; gap: .75rem; align-items: flex-end; }
+.filtro-campo { display: flex; flex-direction: column; gap: .3rem; flex: 1 1 11rem; min-width: 0; }
+.filtro-campo-busca { flex: 2 1 16rem; }
+.filtro-rotulo { font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #245b90; }
+.filtro-controle { min-height: 44px; padding: .5rem .7rem; border: 1px solid var(--line); border-radius: 6px; background: #fafcfe; color: inherit; font: inherit; font-size: .9rem; width: 100%; }
+.filtro-controle:focus { outline: 2px solid #245b90; outline-offset: 1px; }
+.filtro-limpar { min-height: 44px; padding: .5rem 1rem; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: #245b90; font-weight: 600; font-size: .85rem; cursor: pointer; }
+.filtro-limpar:hover { background: #f1f6fb; }
+.filtros-contagem { margin-top: .7rem; font-size: .82rem; color: #6b7280; }
+.filtros-vazio { grid-column: 1 / -1; text-align: center; color: #6b7280; padding: 2rem 0; }
+@media (max-width: 640px) { .filtros-barra { flex-direction: column; align-items: stretch; } }
+
 #contato input, #contato textarea { background: #fafcfe; min-height: 48px; border-radius: 6px; font-size: .9rem; }
 #contato a[href^="mailto"] { overflow-wrap: anywhere; }
 body > footer { background: #0c233a; padding: 40px 24px; font-size: .8rem; }

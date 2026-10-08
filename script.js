@@ -148,8 +148,20 @@ function createServiceCard(serviceId, service) {
 }
 
 function createProjectCard(projectId, project) {
+    const local = String(project.details?.Local || '').split(',').map(p => p.trim());
+    const uf = local.length >= 2 && local[local.length - 1].length === 2 ? local[local.length - 1].toUpperCase() : '';
+    const textoBusca = [
+        project.title, project.summary, project.details?.Local, project.details?.Serviço,
+        ...(project.keyFeatures || [])
+    ].filter(Boolean).join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
     return `
-        <article class="project-card bg-white overflow-hidden group">
+        <article class="project-card bg-white overflow-hidden group"
+                 data-obra="${projectId}"
+                 data-uf="${uf}"
+                 data-ano="${project.details?.Ano || ''}"
+                 data-servico="${(project.details?.Serviço || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}"
+                 data-busca="${textoBusca.replace(/"/g, '&quot;')}">
             <div class="relative">
                 <img src="${webImage(project.image)}" alt="${project.title}" loading="lazy" decoding="async" width="640" height="420" class="w-full h-64 object-cover">
                 <div class="project-image-action absolute inset-0 flex">
@@ -254,7 +266,7 @@ function showProductListPage(categoryId, push = true) {
         Object.keys(category.products).forEach(productId => {
             const product = category.products[productId];
             productsHtml += `
-                <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
+                <div data-produto="${category.categoryName} ${product.name} ${product.summary || ''} ${(product.specs && Object.values(product.specs).join(' ')) || ''}" class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
                     <div class="relative aspect-square bg-gray-900">
                         <img src="${webImage(product.image)}" alt="${product.name}" loading="lazy" decoding="async" width="640" height="640" class="w-full h-full object-contain">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -302,8 +314,8 @@ function renderSubcategoryProducts(categoryId, subcategoryId) {
     if (Object.keys(subcategory.products).length > 0) {
         Object.keys(subcategory.products).forEach(productId => {
             const product = subcategory.products[productId];
-            productsHtml += `
-                <div class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
+productsHtml += `
+                <div data-produto="${category.categoryName} ${subcategory.subcategoryName} ${product.name} ${product.summary || ''} ${(product.specs && Object.values(product.specs).join(' ')) || ''}" class="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden group transform hover:shadow-blue-500/20 hover:-translate-y-2 transition duration-300 flex flex-col">
                     <div class="relative aspect-square bg-gray-900">
                         <img src="${webImage(product.image)}" alt="${product.name}" loading="lazy" decoding="async" width="640" height="640" class="w-full h-full object-contain">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
